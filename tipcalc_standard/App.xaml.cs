@@ -13,7 +13,7 @@ namespace tipcalc
         {
             InitializeComponent();
 
-            MainPage = new tipcalc.MainPage();
+            MainPage = new NavigationPage(new MainPage());
         }
 
         protected override void OnStart()
