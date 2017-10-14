@@ -4,8 +4,23 @@
              xmlns:local="clr-namespace:tipcalc"
              x:Class="tipcalc.MainPage">
 
-	<Label Text="Welcome to Xamarin Forms!" 
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" />
-
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical" Spacing="20">
+            <StackLayout Orientation="Horizontal">
+                <Label x:Name="lblTotal" Text="Total: "></Label>
+                <Entry x:Name="tipTotal"></Entry>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label x:Name="lblTipAmount" Text="Tip Amount: "></Label>
+                <Entry x:Name="tipAmount"></Entry>
+            </StackLayout>
+            <Slider x:Name="sldTipCalc"
+                    Minimum="0"
+                    Maximum="10"></Slider>
+            <StackLayout Orientation="Horizontal">
+                <Label x:Name="lblGrandTotal" Text="Grand Total: "></Label>
+                <Label x:Name="grandTotal"></Label>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
 </ContentPage>
