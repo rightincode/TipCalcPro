@@ -1,19 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Text;
-using tipclac_core;
+using tipclac_core.Interfaces;
 
 namespace tipcalc_standard.ViewModels
 {
     public class MainPageViewModel : INotifyPropertyChanged
     {
         private string totalTxt;
-        private TipCalculator _calculator;
+        private ITipCalculator _calculator;
 
-        public MainPageViewModel()
+        public MainPageViewModel(ITipCalculator tipCalculator)
         {
-            _calculator = new TipCalculator();
+            _calculator = tipCalculator;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

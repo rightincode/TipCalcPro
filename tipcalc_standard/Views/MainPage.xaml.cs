@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using tipcalc_standard.ViewModels;
+using tipclac_core.Interfaces;
 using Xamarin.Forms;
 
 namespace tipcalc
@@ -17,10 +14,10 @@ namespace tipcalc
             get { return vm; }
         }
 
-        public MainPage()
+        public MainPage(ITipCalculator tipCalculator)
         {
             InitializeComponent();
-            vm = new MainPageViewModel();
+            vm = new MainPageViewModel(tipCalculator);
             BindingContext = VM;
         }
 
