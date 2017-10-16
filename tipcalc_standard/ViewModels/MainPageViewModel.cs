@@ -39,6 +39,7 @@ namespace tipcalc_standard.ViewModels
                 }
                 finally
                 {
+                    CalcTip(_calculator.TipPercent);
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TotalTxt"));
                 }
             }

@@ -6,6 +6,7 @@ namespace tipcalc_core.Models
     {
         private double total;
         private double tip;
+        private double tipPercent;
         private double grandTotal;
 
         public double Total {
@@ -16,6 +17,13 @@ namespace tipcalc_core.Models
         public double Tip
         {
             get { return tip; }
+            set { tip = value; }
+        }
+
+        public double TipPercent
+        {
+            get { return tipPercent; }
+            set { tipPercent = value; }
         }
 
         public double GrandTotal
@@ -25,6 +33,8 @@ namespace tipcalc_core.Models
 
         public void CalcTip(double tipPercent)
         {
+            this.tipPercent = tipPercent;
+
             if (tipPercent > 0)
             {
                 tip = total * (tipPercent / 100);                
