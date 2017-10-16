@@ -16,10 +16,11 @@
             </StackLayout>
             <Slider x:Name="sldTipCalc"
                     Minimum="0"
-                    Maximum="100" ValueChanged="onTipPercentageValueChanged"></Slider>
+                    Maximum="100"
+                    Value="{Binding TipPercent, Mode=TwoWay}"></Slider>
             <StackLayout Orientation="Horizontal">
                 <Label x:Name="lblTipPercent" Text="Tip %: "></Label>
-                <Label x:Name="txtTipPercent" WidthRequest="100" Text="{Binding TipPercent, Mode=OneWay}"></Label>
+                <Label x:Name="txtTipPercent" WidthRequest="100" Text="{Binding TipPercentTxt, Mode=OneWay}"></Label>
             </StackLayout>
             <StackLayout Orientation="Horizontal">
                 <Label x:Name="lblGrandTotal" FontSize="Large" Text="Grand Total: "></Label>

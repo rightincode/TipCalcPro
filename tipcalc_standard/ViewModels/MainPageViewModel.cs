@@ -7,7 +7,6 @@ namespace tipcalc_standard.ViewModels
     public class MainPageViewModel : INotifyPropertyChanged
     {
         private string totalTxt;
-        private double tipPercent;
         private ITipCalculator _calculator;
 
         public MainPageViewModel(ITipCalculator tipCalculator)
@@ -39,7 +38,7 @@ namespace tipcalc_standard.ViewModels
                 }
                 finally
                 {
-                    CalcTip(_calculator.TipPercent);
+                    CalcTip();
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TotalTxt"));
                 }
             }
@@ -49,13 +48,20 @@ namespace tipcalc_standard.ViewModels
         {
             get { return _calculator.Tip.ToString(); }
         }
+        
+        public string TipPercentTxt
+        {
+            get { return _calculator.TipPercent.ToString(); }
+        }
 
         public double TipPercent
         {
-            get { return tipPercent; }
+            get { return _calculator.TipPercent; }
             set {
-                tipPercent = value;
+                _calculator.TipPercent = value;
+                CalcTip();
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TipPercent"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TipPercentTxt"));
             }
         }
 
@@ -64,9 +70,9 @@ namespace tipcalc_standard.ViewModels
             get { return _calculator.GrandTotal.ToString(); }
         }
 
-        public void CalcTip(double tipPercent)
+        public void CalcTip()
         {
-            _calculator.CalcTip(tipPercent);
+            _calculator.CalcTip();
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TipTxt"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("GrandTotalTxt"));
         }

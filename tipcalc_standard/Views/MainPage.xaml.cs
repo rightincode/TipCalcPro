@@ -20,11 +20,5 @@ namespace tipcalc
             vm = new MainPageViewModel(tipCalculator);
             BindingContext = VM;
         }
-
-        public void onTipPercentageValueChanged(Object control, ValueChangedEventArgs args)
-        {
-            VM.TipPercent = args.NewValue;
-            VM.CalcTip(args.NewValue);
-        }
     }
 }

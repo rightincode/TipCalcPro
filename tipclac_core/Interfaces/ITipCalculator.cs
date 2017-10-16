@@ -7,6 +7,6 @@
         double TipPercent { get; set; }
         double GrandTotal { get; }
 
-        void CalcTip(double tipPercent);
+        void CalcTip();
     }
 }

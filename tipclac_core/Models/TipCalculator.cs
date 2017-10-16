@@ -31,10 +31,8 @@ namespace tipcalc_core.Models
             get { return grandTotal; }
         }
 
-        public void CalcTip(double tipPercent)
+        public void CalcTip()
         {
-            this.tipPercent = tipPercent;
-
             if (tipPercent > 0)
             {
                 tip = total * (tipPercent / 100);                
