@@ -1,6 +1,6 @@
 ﻿using System;
 using tipcalc_standard.ViewModels;
-using tipclac_core.Interfaces;
+using tipcalc_core.Interfaces;
 using Xamarin.Forms;
 
 namespace tipcalc

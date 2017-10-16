@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.Extensions.DependencyInjection;
-using tipclac_core.Interfaces;
-using tipclac_core;
+using tipcalc_core.Interfaces;
+using tipcalc_core.Models;
 
 using Xamarin.Forms;
 

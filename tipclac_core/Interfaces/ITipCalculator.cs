@@ -1,4 +1,4 @@
-﻿namespace tipclac_core.Interfaces
+﻿namespace tipcalc_core.Interfaces
 {
     public interface ITipCalculator
     {

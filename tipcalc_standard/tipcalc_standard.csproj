@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\tipclac_core\tipclac_core.csproj" />
+    <ProjectReference Include="..\tipclac_core\tipcalc_core.csproj" />
   </ItemGroup>
 
 </Project>

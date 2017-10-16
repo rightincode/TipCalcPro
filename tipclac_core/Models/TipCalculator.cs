@@ -1,6 +1,6 @@
-﻿using tipclac_core.Interfaces;
+﻿using tipcalc_core.Interfaces;
 
-namespace tipclac_core
+namespace tipcalc_core.Models
 {
     public class TipCalculator : ITipCalculator
     {

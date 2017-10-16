@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.16
+VisualStudioVersion = 15.0.27004.2002
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tipcalc.Android", "tipcalc\tipcalc.Android\tipcalc.Android.csproj", "{9919D588-B28B-4409-AC67-F15D47F43983}"
 EndProject
@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tipcalc.iOS", "tipcalc\tipc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "tipcalc_standard", "tipcalc_standard\tipcalc_standard.csproj", "{7906DF06-D354-466A-8BF5-9A801E0BFE7B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tipclac_core", "tipclac_core\tipclac_core.csproj", "{0B154117-5048-41D4-A4F3-5C95EE0F4034}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "tipcalc_core", "tipclac_core\tipcalc_core.csproj", "{0B154117-5048-41D4-A4F3-5C95EE0F4034}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
-using tipclac_core.Interfaces;
+using tipcalc_core.Interfaces;
 
 namespace tipcalc_standard.ViewModels
 {
