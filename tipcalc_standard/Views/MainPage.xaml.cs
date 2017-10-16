@@ -23,6 +23,7 @@ namespace tipcalc
 
         public void onTipPercentageValueChanged(Object control, ValueChangedEventArgs args)
         {
+            VM.TipPercent = args.NewValue;
             VM.CalcTip(args.NewValue);
         }
     }
