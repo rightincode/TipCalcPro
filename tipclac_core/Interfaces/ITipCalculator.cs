@@ -8,5 +8,7 @@
         double GrandTotal { get; }
 
         void CalcTip();
+
+        void CalcTipPercentage();
     }
 }

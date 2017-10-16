@@ -43,6 +43,20 @@ namespace tipcalc_core.Models
             }
             UpdateGrandTotal();
         }
+
+        public void CalcTipPercentage()
+        {
+            if (total > 0)
+            {
+                tipPercent = (tip / total) * 100;
+            }
+            else
+            {
+                tipPercent = 0;
+            }
+
+            UpdateGrandTotal();
+        }
         
         private void UpdateGrandTotal()
         {

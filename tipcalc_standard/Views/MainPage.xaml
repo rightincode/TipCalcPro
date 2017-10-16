@@ -12,7 +12,7 @@
             </StackLayout>
             <StackLayout Orientation="Horizontal">
                 <Label x:Name="lblTipAmount" Text="Tip Amount: "></Label>
-                <Label x:Name="txtTipAmount" WidthRequest="100" Text="{Binding TipTxt, Mode=OneWay}"></Label>
+                <Entry x:Name="txtTipAmount" WidthRequest="100" Keyboard="Numeric" Text="{Binding TipTxt, Mode=TwoWay}"></Entry>
             </StackLayout>
             <Slider x:Name="sldTipCalc"
                     Minimum="0"
