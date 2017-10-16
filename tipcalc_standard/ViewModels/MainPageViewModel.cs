@@ -2,17 +2,19 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
+using tipclac_core;
 
 namespace tipcalc_standard.ViewModels
 {
     public class MainPageViewModel : INotifyPropertyChanged
     {
-        private double total;
         private string totalTxt;
+        private TipCalculator _calculator;
 
-        private double tip;
-
-        private double grandTotal;
+        public MainPageViewModel()
+        {
+            _calculator = new TipCalculator();
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -30,11 +32,11 @@ namespace tipcalc_standard.ViewModels
                 try
                 {
                     string newValue = value;
-                    total = double.Parse(newValue);
+                    _calculator.Total = double.Parse(newValue);
                 }
                 catch (Exception)
                 {
-                    total = 0;
+                    _calculator.Total = 0;
                 }
                 finally
                 {
@@ -45,28 +47,18 @@ namespace tipcalc_standard.ViewModels
 
         public string TipTxt
         {
-            get { return tip.ToString(); }
+            get { return _calculator.Tip.ToString(); }
         }
 
         public string GrandTotalTxt
         {
-            get { return grandTotal.ToString(); }
+            get { return _calculator.GrandTotal.ToString(); }
         }
 
         public void CalcTip(double tipPercent)
         {
-            if (tipPercent > 0)
-            {
-                tip = total * (tipPercent/100);
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TipTxt"));
-                UpdateGrandTotal();
-            }            
-        }
-
-        private void UpdateGrandTotal()
-        {
-            grandTotal = total + tip;
-
+            _calculator.CalcTip(tipPercent);
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TipTxt"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("GrandTotalTxt"));
         }
     }
