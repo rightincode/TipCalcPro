@@ -8,7 +8,7 @@ namespace tipcalc_standard.ViewModels
     {
         private string totalTxt;
         private string tipTxt;
-        private ITipCalculator _calculator;
+        private readonly ITipCalculator _calculator;
 
         public MainPageViewModel(ITipCalculator tipCalculator)
         {
