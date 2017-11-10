@@ -1,4 +1,5 @@
-﻿using tipcalc_core.Interfaces;
+﻿using System;
+using tipcalc_core.Interfaces;
 
 namespace tipcalc_core.Models
 {
@@ -23,7 +24,19 @@ namespace tipcalc_core.Models
         public double TipPercent
         {
             get { return tipPercent; }
-            set { tipPercent = value; }
+            set {
+
+                var remainder = Math.Truncate(value) - value;
+
+                if (remainder < 0.5)
+                {
+                    tipPercent = Math.Floor(value);
+                }
+                else
+                {
+                    tipPercent = Math.Ceiling(value);
+                }
+            }
         }
 
         public double GrandTotal
@@ -35,7 +48,7 @@ namespace tipcalc_core.Models
         {
             if (tipPercent > 0)
             {
-                tip = total * (tipPercent / 100);                
+                tip = Math.Round(total * (tipPercent / 100), 2);                
             }
             else
             {
@@ -48,7 +61,7 @@ namespace tipcalc_core.Models
         {
             if (total > 0)
             {
-                tipPercent = (tip / total) * 100;
+                tipPercent = Math.Round((tip / total) * 100, 1);
             }
             else
             {
