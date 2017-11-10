@@ -47,7 +47,7 @@ namespace tipcalc_standard.ViewModels
 
         public string TipTxt
         {
-            get { return tipTxt; }
+            get { return _calculator.Tip.ToString("F2"); }
             set
             {
                 tipTxt = value;
@@ -86,7 +86,7 @@ namespace tipcalc_standard.ViewModels
 
         public string GrandTotalTxt
         {
-            get { return _calculator.GrandTotal.ToString(); }
+            get { return _calculator.GrandTotal.ToString("F2"); }
         }
 
         public void CalcTip()
