@@ -24,19 +24,7 @@ namespace tipcalc_core.Models
         public double TipPercent
         {
             get { return tipPercent; }
-            set {
-
-                var remainder = Math.Truncate(value) - value;
-
-                if (remainder < 0.5)
-                {
-                    tipPercent = Math.Floor(value);
-                }
-                else
-                {
-                    tipPercent = Math.Ceiling(value);
-                }
-            }
+            set { tipPercent = Math.Round(value); }
         }
 
         public double GrandTotal
