@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using tipcalc_core.Interfaces;
 using tipcalc_core.Models;
+using tipcalc_standard.Views;
 
 using Xamarin.Forms;
 
@@ -9,14 +10,15 @@ namespace tipcalc
 {
     public partial class App : Application
     {
-        private IServiceProvider _serviceProvider;
-        
+
+        public IServiceProvider ServiceProvider { get; private set; }
+
         public App()
         {
             InitializeComponent();
             StartupConfiguration();
 
-            MainPage = new NavigationPage(new MainPage(_serviceProvider.GetService<ITipCalculator>()));
+            MainPage = new NavigationPage(new MainPage());
         }
 
         protected override void OnStart()
@@ -38,7 +40,7 @@ namespace tipcalc
         {
             var services = new ServiceCollection();
             services.AddTransient<ITipCalculator, TipCalculator>();
-            _serviceProvider = services.BuildServiceProvider();
+            ServiceProvider = services.BuildServiceProvider();
         }
     }
 }

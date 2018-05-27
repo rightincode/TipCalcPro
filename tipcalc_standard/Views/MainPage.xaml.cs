@@ -1,24 +1,60 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 using tipcalc_standard.ViewModels;
 using tipcalc_core.Interfaces;
+
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
-namespace tipcalc
+namespace tipcalc_standard.Views
 {
-    public partial class MainPage : ContentPage
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class MainPage : MasterDetailPage
     {
-        private MainPageViewModel vm;
-
-        public MainPageViewModel VM
-        {
-            get { return vm; }
-        }
-
-        public MainPage(ITipCalculator tipCalculator)
+        public MainPage()
         {
             InitializeComponent();
-            vm = new MainPageViewModel(tipCalculator);
-            BindingContext = VM;
+            MasterPage.ListView.ItemSelected += ListView_ItemSelected;
+        }
+
+        private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            var item = e.SelectedItem as MainPageMenuItem;
+            if (item == null)
+                return;
+
+            Page page;
+
+            //Todo: set when constructed?
+            switch (item.Id)
+            {
+                case 0:
+                    item.TargetType = typeof(HomeDetailPage);
+                    page = (Page)Activator.CreateInstance(item.TargetType);
+                    break;
+
+                case 1:
+                    item.TargetType = typeof(CalculatorPage);
+                    page = new CalculatorPage(((tipcalc.App)Application.Current).ServiceProvider.GetService<ITipCalculator>());
+                    break;
+
+                default:
+                    item.TargetType = typeof(HomeDetailPage);
+                    page = (Page)Activator.CreateInstance(item.TargetType);
+                    break;
+            }
+                        
+            page.Title = item.Title;
+
+            Detail = new NavigationPage(page);
+            IsPresented = false;
+
+            MasterPage.ListView.SelectedItem = null;
         }
     }
 }
