@@ -31,7 +31,7 @@ namespace tipcalc_standard.ViewModels
                 try
                 {
                     string newValue = value;
-                    _calculator.Total = double.Parse(newValue);
+                    _calculator.Total = decimal.Parse(newValue);
                 }
                 catch (Exception)
                 {
@@ -55,7 +55,7 @@ namespace tipcalc_standard.ViewModels
                 try
                 {
                     string newValue = value;
-                    _calculator.Tip = double.Parse(newValue);
+                    _calculator.Tip = decimal.Parse(newValue);
                 }
                 catch (Exception)
                 {
@@ -73,7 +73,7 @@ namespace tipcalc_standard.ViewModels
             get { return _calculator.TipPercent.ToString(); }
         }
 
-        public double TipPercent
+        public decimal TipPercent
         {
             get { return _calculator.TipPercent; }
             set {

@@ -5,51 +5,38 @@ namespace tipcalc_core.Models
 {
     public class TipCalculator : ITipCalculator
     {
-        private double total;
-        private double tip;
-        private double tipPercent;
-        private double grandTotal;
+        private decimal tipPercent;
 
-        public double Total {
-            get { return total; }
-            set { total = value; }
-        }
+        public decimal Total { get; set; }
 
-        public double Tip
-        {
-            get { return tip; }
-            set { tip = value; }
-        }
+        public decimal Tip { get; set; }
 
-        public double TipPercent
+        public decimal TipPercent
         {
             get { return tipPercent; }
             set { tipPercent = Math.Round(value); }
         }
 
-        public double GrandTotal
-        {
-            get { return grandTotal; }
-        }
+        public decimal GrandTotal { get; private set; }
 
         public void CalcTip()
         {
             if (tipPercent > 0)
             {
-                tip = Math.Round(total * (tipPercent / 100), 2);                
+                Tip = Math.Round(Total * (tipPercent / 100), 2);                
             }
             else
             {
-                tip = 0;
+                Tip = 0;
             }
             UpdateGrandTotal();
         }
 
         public void CalcTipPercentage()
         {
-            if (total > 0)
+            if (Total > 0)
             {
-                tipPercent = Math.Round((tip / total) * 100, 1);
+                tipPercent = Math.Round((Tip / Total) * 100, 1);
             }
             else
             {
@@ -61,7 +48,7 @@ namespace tipcalc_core.Models
         
         private void UpdateGrandTotal()
         {
-            grandTotal = total + tip;
+            GrandTotal = Total + Tip;
         }
     }
 }

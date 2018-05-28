@@ -154,7 +154,7 @@ namespace tipcalc_standard.tests
 
             Assert.AreEqual("10.00", myCalculatorViewModel.TipTxt);
             Assert.AreEqual(10, myCalculatorViewModel.TipPercent);
-            Assert.AreEqual("10", myCalculatorViewModel.TipPercentTxt);
+            Assert.AreEqual("10.0", myCalculatorViewModel.TipPercentTxt);
             Assert.AreEqual("110.00", myCalculatorViewModel.GrandTotalTxt);
         }
 
@@ -170,7 +170,7 @@ namespace tipcalc_standard.tests
 
             Assert.AreEqual("6.30", myCalculatorViewModel.TipTxt);
             Assert.AreEqual(18, myCalculatorViewModel.TipPercent);
-            Assert.AreEqual("18", myCalculatorViewModel.TipPercentTxt);
+            Assert.AreEqual("18.0", myCalculatorViewModel.TipPercentTxt);
             Assert.AreEqual("41.30", myCalculatorViewModel.GrandTotalTxt);
         }
     }

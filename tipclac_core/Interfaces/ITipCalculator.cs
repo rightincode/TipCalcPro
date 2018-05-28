@@ -2,10 +2,10 @@
 {
     public interface ITipCalculator
     {
-        double Total { get; set; }
-        double Tip { get; set; }
-        double TipPercent { get; set; }
-        double GrandTotal { get; }
+        decimal Total { get; set; }
+        decimal Tip { get; set; }
+        decimal TipPercent { get; set; }
+        decimal GrandTotal { get; }
 
         void CalcTip();
 
