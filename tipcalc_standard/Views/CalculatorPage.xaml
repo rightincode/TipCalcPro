@@ -45,7 +45,7 @@
             <Slider x:Name="sldTipCalc"
                     Minimum="0"
                     Maximum="100"
-                    Value="{Binding TipPercent, Mode=OneWayToSource}"></Slider>
+                    Value="{Binding TipPercent, Mode=TwoWay}"></Slider>
             <StackLayout Orientation="Horizontal">
                 <Label x:Name="lblGrandTotal" 
                        Text="Grand Total: " 

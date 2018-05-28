@@ -14,7 +14,24 @@ namespace tipcalc_standard.Views
         {
             InitializeComponent();
             VM = new CalculatorPageViewModel(tipCalculator);
+            InitializeEventHandlers();
             BindingContext = VM;
+        }
+
+        private void InitializeEventHandlers()
+        {
+            tipPercentPreset.SelectedIndexChanged += OnTipPercentPresetSelectedIndexChanged;
+        }
+
+        private void OnTipPercentPresetSelectedIndexChanged(Object sender, EventArgs e)
+        {
+            var TipPercentPresetPicker = (Picker)sender;
+            var SelectedTipPercentPreset = (TipPercentage)TipPercentPresetPicker.SelectedItem;
+
+            if (SelectedTipPercentPreset != null)
+            {
+                VM.TipPercent = SelectedTipPercentPreset.TipPercentageValue;
+            }
         }
     }
 }

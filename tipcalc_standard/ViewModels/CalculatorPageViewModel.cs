@@ -48,15 +48,15 @@ namespace tipcalc_standard.ViewModels
                 }
                 finally
                 {
-                    CalcTip();
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TotalTxt"));
+                    _calculator.CalcTip();
+                    CalculateTipPropertyChangedNotifications();
                 }
             }
         }
 
         public string TipTxt
         {
-            get { return _calculator.Tip.ToString("F2"); }
+            get { return _calculator.Tip.ToString(); }
             set
             {
                 tipTxt = value;
@@ -72,7 +72,8 @@ namespace tipcalc_standard.ViewModels
                 }
                 finally
                 {
-                    CalcTipPercentage();
+                    _calculator.CalcTipPercentage();
+                    CalculateTipPercentagePropertyChangedNotifications();
                 }
             }
         }
@@ -87,9 +88,8 @@ namespace tipcalc_standard.ViewModels
             get { return _calculator.TipPercent; }
             set {
                 _calculator.TipPercent = value;
-                CalcTip();
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TipPercent"));
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TipPercentTxt"));
+                _calculator.CalcTip();
+                CalculateTipPropertyChangedNotifications();
             }
         }
 
@@ -98,20 +98,19 @@ namespace tipcalc_standard.ViewModels
             get { return _calculator.GrandTotal.ToString("F2"); }
         }
 
-        public void CalcTip()
+        private void CalculateTipPropertyChangedNotifications()
         {
-            _calculator.CalcTip();
-            tipTxt = _calculator.Tip.ToString();
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TipTxt"));
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("GrandTotalTxt"));
-        }
-
-        public void CalcTipPercentage()
-        {
-            _calculator.CalcTipPercentage();
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TipPercent"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TipPercentTxt"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("GrandTotalTxt"));
         }
+
+        private void CalculateTipPercentagePropertyChangedNotifications()
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TipPercentTxt"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("GrandTotalTxt"));
+        }
+
+
     }
 }
