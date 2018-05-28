@@ -4,13 +4,13 @@ using tipcalc_core.Interfaces;
 
 namespace tipcalc_standard.ViewModels
 {
-    public class MainPageViewModel : INotifyPropertyChanged
+    public class CalculatorPageViewModel : INotifyPropertyChanged
     {
         private string totalTxt;
         private string tipTxt;
         private readonly ITipCalculator _calculator;
 
-        public MainPageViewModel(ITipCalculator tipCalculator)
+        public CalculatorPageViewModel(ITipCalculator tipCalculator)
         {
             _calculator = tipCalculator;
         }

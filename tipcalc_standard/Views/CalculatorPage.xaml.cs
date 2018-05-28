@@ -7,17 +7,13 @@ namespace tipcalc_standard.Views
 {
     public partial class CalculatorPage : ContentPage
     {
-        private MainPageViewModel vm;
 
-        public MainPageViewModel VM
-        {
-            get { return vm; }
-        }
+        public CalculatorPageViewModel VM { get; }
 
         public CalculatorPage(ITipCalculator tipCalculator)
         {
             InitializeComponent();
-            vm = new MainPageViewModel(tipCalculator);
+            VM = new CalculatorPageViewModel(tipCalculator);
             BindingContext = VM;
         }
     }
