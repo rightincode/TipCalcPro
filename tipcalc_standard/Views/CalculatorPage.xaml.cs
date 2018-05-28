@@ -21,6 +21,7 @@ namespace tipcalc_standard.Views
         private void InitializeEventHandlers()
         {
             tipPercentPreset.SelectedIndexChanged += OnTipPercentPresetSelectedIndexChanged;
+            btnResetTipCalculator.Clicked += OnBtnResetTipCalculatorClicked;
         }
 
         private void OnTipPercentPresetSelectedIndexChanged(Object sender, EventArgs e)
@@ -32,6 +33,12 @@ namespace tipcalc_standard.Views
             {
                 VM.TipPercent = SelectedTipPercentPreset.TipPercentageValue;
             }
+        }
+
+        private void OnBtnResetTipCalculatorClicked(object sender, EventArgs e)
+        {
+            tipPercentPreset.SelectedIndex = -1;
+            VM.ResetCalculator();
         }
     }
 }

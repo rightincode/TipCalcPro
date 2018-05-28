@@ -120,7 +120,7 @@ namespace tipcalc_standard.tests
                 TipPercent = 10
             };
                         
-            Assert.AreEqual("10.00", myCalculatorViewModel.TipTxt);
+            Assert.AreEqual("10.0", myCalculatorViewModel.TipTxt);
             Assert.AreEqual(10, myCalculatorViewModel.TipPercent);
             Assert.AreEqual("10", myCalculatorViewModel.TipPercentTxt);
             Assert.AreEqual("110.00", myCalculatorViewModel.GrandTotalTxt);
@@ -152,7 +152,7 @@ namespace tipcalc_standard.tests
                 TipTxt = "10"
             };
 
-            Assert.AreEqual("10.00", myCalculatorViewModel.TipTxt);
+            Assert.AreEqual("10", myCalculatorViewModel.TipTxt);
             Assert.AreEqual(10, myCalculatorViewModel.TipPercent);
             Assert.AreEqual("10.0", myCalculatorViewModel.TipPercentTxt);
             Assert.AreEqual("110.00", myCalculatorViewModel.GrandTotalTxt);
@@ -172,6 +172,28 @@ namespace tipcalc_standard.tests
             Assert.AreEqual(18, myCalculatorViewModel.TipPercent);
             Assert.AreEqual("18.0", myCalculatorViewModel.TipPercentTxt);
             Assert.AreEqual("41.30", myCalculatorViewModel.GrandTotalTxt);
+        }
+
+        [TestMethod]
+        public void ResetCalulator_ValidViewModel_CalculatorResetToInitialState()
+        {
+            var myCalculator = new TipCalculator();
+            var myCalculatorViewModel = new CalculatorPageViewModel(myCalculator)
+            {
+                TotalTxt = "35",
+                TipTxt = "6.30"
+            };
+
+            var newCalculator = new TipCalculator();
+            var newCalculatorViewModel = new CalculatorPageViewModel(myCalculator);
+            
+            myCalculatorViewModel.ResetCalculator();
+
+            Assert.AreEqual(newCalculatorViewModel.TotalTxt, myCalculatorViewModel.TotalTxt);
+            Assert.AreEqual(newCalculatorViewModel.TipTxt, myCalculatorViewModel.TipTxt);
+            Assert.AreEqual(newCalculatorViewModel.TipPercent, myCalculatorViewModel.TipPercent);
+            Assert.AreEqual(newCalculatorViewModel.TipPercentTxt, myCalculatorViewModel.TipPercentTxt);
+            Assert.AreEqual(newCalculatorViewModel.GrandTotalTxt, myCalculatorViewModel.GrandTotalTxt);
         }
     }
 }

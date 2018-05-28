@@ -57,6 +57,11 @@
                        WidthRequest="100"
                        FontSize="Medium"
                        VerticalTextAlignment="Center"></Label>
+                <Button x:Name="btnResetTipCalculator"
+                        Text="Reset"
+                        WidthRequest="100"
+                        FontSize="Medium"
+                        VerticalOptions="Center"></Button>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

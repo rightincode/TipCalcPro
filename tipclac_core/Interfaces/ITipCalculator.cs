@@ -10,5 +10,7 @@
         void CalcTip();
 
         void CalcTipPercentage();
+
+        void Reset();
     }
 }

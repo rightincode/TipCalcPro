@@ -30,7 +30,7 @@ namespace tipcalc_standard.ViewModels
         {
             get
             {
-                return totalTxt;
+                return _calculator.Total.ToString();
             }
 
             set
@@ -98,6 +98,15 @@ namespace tipcalc_standard.ViewModels
             get { return _calculator.GrandTotal.ToString("F2"); }
         }
 
+        public void ResetCalculator()
+        {
+            _calculator.Reset();
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TotalTxt"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TipTxt"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TipPercentTxt"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("GrandTotalTxt"));
+        }
+
         private void CalculateTipPropertyChangedNotifications()
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TipTxt"));
@@ -110,7 +119,6 @@ namespace tipcalc_standard.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TipPercentTxt"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("GrandTotalTxt"));
         }
-
 
     }
 }

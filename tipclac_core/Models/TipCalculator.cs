@@ -45,6 +45,14 @@ namespace tipcalc_core.Models
 
             UpdateGrandTotal();
         }
+
+        public void Reset()
+        {
+            Total = 0;
+            Tip = 0;
+            TipPercent = 0;
+            GrandTotal = 0;
+        }
         
         private void UpdateGrandTotal()
         {

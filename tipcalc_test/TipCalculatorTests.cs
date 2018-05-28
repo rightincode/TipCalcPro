@@ -31,7 +31,7 @@ namespace tipcalc_core.tests
 
             tipCalculator.CalcTip();
 
-            Assert.AreEqual(tipCalculator.Tip, 1.00);
+            Assert.AreEqual(tipCalculator.Tip, (decimal)1.00);
         }
 
         [TestMethod]
@@ -45,7 +45,7 @@ namespace tipcalc_core.tests
 
             tipCalculator.CalcTip();
 
-            Assert.AreEqual(tipCalculator.Tip, 2.50);
+            Assert.AreEqual(tipCalculator.Tip, (decimal)2.50);
         }
 
         [TestMethod]
@@ -96,7 +96,7 @@ namespace tipcalc_core.tests
             var tipCalculator = new TipCalculator
             {
                 Total = 10,
-                Tip = 2.50
+                Tip = (decimal)2.50
             };
 
             tipCalculator.CalcTipPercentage();
@@ -130,6 +130,27 @@ namespace tipcalc_core.tests
             tipCalculator.CalcTip();
 
             Assert.AreEqual(tipCalculator.GrandTotal, 15);
+        }
+
+        [TestMethod]
+        public void ResetCalculator_CalculatorPopulatedWithValidValues_CalculatorResetToOriginalState()
+        {
+            var tipCalculator = new TipCalculator
+            {
+                Total = 10,
+                TipPercent = 50
+            };
+
+            var newTipCalculator = new TipCalculator();
+
+            tipCalculator.CalcTip();
+            tipCalculator.Reset();
+
+            Assert.AreEqual(newTipCalculator.GrandTotal, tipCalculator.GrandTotal);
+            Assert.AreEqual(newTipCalculator.Tip, tipCalculator.Tip);
+            Assert.AreEqual(newTipCalculator.TipPercent, tipCalculator.TipPercent);
+            Assert.AreEqual(newTipCalculator.Total, tipCalculator.Total);
+
         }
     }
 }
