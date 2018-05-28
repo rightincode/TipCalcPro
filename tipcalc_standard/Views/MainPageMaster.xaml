@@ -32,10 +32,11 @@
       <ListView.ItemTemplate>
         <DataTemplate>
           <ViewCell>
-            <StackLayout Padding="15,10" HorizontalOptions="FillAndExpand">
-              <Label VerticalOptions="FillAndExpand" 
+            <StackLayout Padding="15,10" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                <Image Source="{Binding Image}"></Image>
+                <Label VerticalOptions="FillAndExpand" 
                     VerticalTextAlignment="Center" 
-                    Text="{Binding Title}" 
+                    Text="{Binding Title}"                    
                     IsEnabled="{Binding IsEnabled}"
                     FontSize="24"/>
             </StackLayout>

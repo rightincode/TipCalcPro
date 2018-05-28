@@ -15,9 +15,9 @@ namespace tipcalc_standard.ViewModels
         {
             MenuItems = new ObservableCollection<MainPageMenuItem>(new[]
             {
-                    new MainPageMenuItem { Id = 0, Title = "Home", IsEnabled = true },
-                    new MainPageMenuItem { Id = 1, Title = "Tip Calculator", IsEnabled = true },
-                    new MainPageMenuItem { Id = 2, Title = "Login", IsEnabled = false },
+                    new MainPageMenuItem { Id = 0, Title = "Home", Image = "baseline_home_black_18dp.png", IsEnabled = true },
+                    new MainPageMenuItem { Id = 1, Title = "Tip Calculator", Image = "baseline_payment_black_18dp.png", IsEnabled = true },
+                    new MainPageMenuItem { Id = 2, Title = "Login", Image = "baseline_globe_black_18dp.png", IsEnabled = false },
             });
         }
 

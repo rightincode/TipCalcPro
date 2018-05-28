@@ -105,6 +105,9 @@
     <None Include="tipcalc.UWP_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="baseline_payment_black_18dp.png" />
+    <Content Include="baseline_globe_black_18dp.png" />
+    <Content Include="baseline_home_black_18dp.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-100.png" />
     <Content Include="Assets\LockScreenLogo.scale-125.png" />
