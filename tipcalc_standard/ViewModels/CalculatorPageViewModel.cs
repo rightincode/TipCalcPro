@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using tipcalc_core.Interfaces;
 
@@ -16,6 +17,14 @@ namespace tipcalc_standard.ViewModels
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+        public List<TipPercentage> TipPresets { get; } = new List<TipPercentage>
+        {
+            new TipPercentage{ TipPercentageTxt = "15%", TipPercentageValue = 15},
+            new TipPercentage{ TipPercentageTxt = "18%", TipPercentageValue = 18},
+            new TipPercentage{ TipPercentageTxt = "20%", TipPercentageValue = 20},
+            new TipPercentage{ TipPercentageTxt = "22%", TipPercentageValue = 22},
+        };
 
         public string TotalTxt
         {

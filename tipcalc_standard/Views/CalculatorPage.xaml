@@ -35,6 +35,12 @@
                        WidthRequest="100"
                        FontSize="Medium"
                        VerticalTextAlignment="Center"></Label>
+                <Picker x:Name="tipPercentPreset"
+                        Title="Select a Tip%"
+                        ItemsSource="{Binding TipPresets}"
+                        ItemDisplayBinding="{Binding TipPercentageTxt}"
+                        WidthRequest="100"
+                        FontSize="Medium"></Picker>
             </StackLayout>
             <Slider x:Name="sldTipCalc"
                     Minimum="0"
