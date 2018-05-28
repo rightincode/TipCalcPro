@@ -39,7 +39,7 @@
                         Title="Select a Tip%"
                         ItemsSource="{Binding TipPresets}"
                         ItemDisplayBinding="{Binding TipPercentageTxt}"
-                        WidthRequest="100"
+                        WidthRequest="125"
                         FontSize="Medium"></Picker>
             </StackLayout>
             <Slider x:Name="sldTipCalc"
