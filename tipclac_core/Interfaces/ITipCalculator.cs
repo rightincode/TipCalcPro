@@ -7,6 +7,8 @@
         decimal TipPercent { get; set; }
         decimal GrandTotal { get; }
 
+        decimal TotalPerPerson { get; }
+
         void CalcTip();
 
         void CalcTipPercentage();

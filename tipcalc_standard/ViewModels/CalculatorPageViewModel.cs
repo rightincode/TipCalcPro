@@ -98,6 +98,11 @@ namespace tipcalc_standard.ViewModels
             get { return _calculator.GrandTotal.ToString("F2"); }
         }
 
+        public string TotalPerPersonTxt
+        {
+            get { return _calculator.TotalPerPerson.ToString("F2"); }
+        }
+
         public void RoundTip()
         {
             _calculator.RoundTip();
@@ -108,6 +113,11 @@ namespace tipcalc_standard.ViewModels
         {
             _calculator.UnRoundTip();
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("GrandTotalTxt"));
+        }
+
+        public void SplitGrandTotal(int numberOfPersons)
+        {
+            _calculator.SplitGrandTotal(numberOfPersons);
         }
 
         public void ResetCalculator()
