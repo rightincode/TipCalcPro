@@ -62,7 +62,7 @@
                         WidthRequest="100"
                         FontSize="Medium"
                         VerticalOptions="Center"></Button>
-            </StackLayout>
+            </StackLayout>            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

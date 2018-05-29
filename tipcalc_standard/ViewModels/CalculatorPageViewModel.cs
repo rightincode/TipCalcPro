@@ -98,6 +98,18 @@ namespace tipcalc_standard.ViewModels
             get { return _calculator.GrandTotal.ToString("F2"); }
         }
 
+        public void RoundTip()
+        {
+            _calculator.RoundTip();
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("GrandTotalTxt"));
+        }
+
+        public void UnRoundTip()
+        {
+            _calculator.UnRoundTip();
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("GrandTotalTxt"));
+        }
+
         public void ResetCalculator()
         {
             _calculator.Reset();

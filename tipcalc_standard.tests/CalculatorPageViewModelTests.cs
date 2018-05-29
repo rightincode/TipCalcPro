@@ -195,5 +195,51 @@ namespace tipcalc_standard.tests
             Assert.AreEqual(newCalculatorViewModel.TipPercentTxt, myCalculatorViewModel.TipPercentTxt);
             Assert.AreEqual(newCalculatorViewModel.GrandTotalTxt, myCalculatorViewModel.GrandTotalTxt);
         }
+
+        [TestMethod]
+        public void RoundTip_Total49_36TipPercent15_GrandTotal172()
+        {
+            var myCalculator = new TipCalculator();
+            var myCalculatorViewModel = new CalculatorPageViewModel(myCalculator)
+            {
+                TotalTxt = "149.36",
+                TipPercent = 15
+            };
+
+            myCalculatorViewModel.RoundTip();
+
+            Assert.AreEqual("172.00", myCalculatorViewModel.GrandTotalTxt);
+        }
+
+        [TestMethod]
+        public void RoundTip_Total49_36TipPercent18_GrandTotal176()
+        {
+            var myCalculator = new TipCalculator();
+            var myCalculatorViewModel = new CalculatorPageViewModel(myCalculator)
+            {
+                TotalTxt = "149.36",
+                TipPercent = 18
+            };
+
+            myCalculatorViewModel.RoundTip();
+
+            Assert.AreEqual("176.00", myCalculatorViewModel.GrandTotalTxt);
+        }
+
+        [TestMethod]
+        public void RoundTipThenUnRoundTip_Total49_36TipPercent15_GrandTotal171_76()
+        {
+            var myCalculator = new TipCalculator();
+            var myCalculatorViewModel = new CalculatorPageViewModel(myCalculator)
+            {
+                TotalTxt = "149.36",
+                TipPercent = 15
+            };
+
+            myCalculatorViewModel.RoundTip();
+            myCalculatorViewModel.UnRoundTip();
+
+            Assert.AreEqual("171.76", myCalculatorViewModel.GrandTotalTxt);
+        }
     }
 }
