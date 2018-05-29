@@ -11,6 +11,10 @@
 
         void CalcTipPercentage();
 
+        void RoundTip();
+
+        void UnRoundTip();
+
         void Reset();
     }
 }
