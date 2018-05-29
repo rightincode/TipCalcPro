@@ -5,8 +5,8 @@
         decimal Total { get; set; }
         decimal Tip { get; set; }
         decimal TipPercent { get; set; }
-        decimal GrandTotal { get; }
-
+        decimal GrandTotal { get; }        
+        int NumberOfPersons { get; set; }
         decimal TotalPerPerson { get; }
 
         void CalcTip();
@@ -17,7 +17,7 @@
 
         void UnRoundTip();
 
-        void SplitGrandTotal(int numberOfPersons);
+        void SplitGrandTotal();
 
         void Reset();
     }

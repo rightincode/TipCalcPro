@@ -24,6 +24,7 @@ namespace tipcalc_standard.Views
             btnResetTipCalculator.Clicked += OnBtnResetTipCalculatorClicked;
             swtRounded.Toggled += OnSwtRoundedToggled;
             sldTipCalc.ValueChanged += OnSldTipCalcValueChanged;
+            stpNumberOfPersons.ValueChanged += OnStpNumberOfPersonsValueChanged;            
         }
 
         private void OnTipPercentPresetSelectedIndexChanged(Object sender, EventArgs e)
@@ -50,7 +51,7 @@ namespace tipcalc_standard.Views
         }
 
         private void OnSwtRoundedToggled(object sender, EventArgs e)
-        {
+        {           
             var roundedSwitch = (Switch)sender;
 
             if (roundedSwitch != null)
@@ -73,6 +74,10 @@ namespace tipcalc_standard.Views
                 //VM.RoundTip();
                 swtRounded.IsToggled = false;
             }
+        }
+
+        private void OnStpNumberOfPersonsValueChanged(object sender, ValueChangedEventArgs e)
+        {
         }
     }
 }

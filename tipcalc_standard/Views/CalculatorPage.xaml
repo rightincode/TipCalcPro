@@ -65,6 +65,35 @@
                 <Switch x:Name="swtRounded"></Switch>                
             </StackLayout>
             <StackLayout Orientation="Horizontal">
+                <Label x:Name="lblNumberOfPersons" 
+                       Text="# Of Persons: " 
+                       WidthRequest="100"
+                       FontSize="Medium"
+                       VerticalTextAlignment="Center"></Label>
+                <Label x:Name="lblNumberOfPersonsCount" 
+                       WidthRequest="100"
+                       FontSize="Medium"
+                       VerticalTextAlignment="Center"
+                       Text="{Binding NumberOfPersons, Mode=OneWay}"></Label>
+                <Stepper x:Name="stpNumberOfPersons"                         
+                         Minimum="1"
+                         Maximum="20"
+                         Increment="1"
+                         Value="{Binding NumberOfPersons, Mode=TwoWay}"></Stepper>                
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label x:Name="lblTotalPerPerson" 
+                       Text="Total Per Person: " 
+                       WidthRequest="100"
+                       FontSize="Medium"
+                       VerticalTextAlignment="Center"></Label>
+                <Label x:Name="txtTotalPerPerson" 
+                       Text="{Binding TotalPerPersonTxt, Mode=OneWay}"
+                       WidthRequest="100"
+                       FontSize="Medium"
+                       VerticalTextAlignment="Center"></Label>                
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
                 <Button x:Name="btnResetTipCalculator"
                         Text="Reset"
                         WidthRequest="100"

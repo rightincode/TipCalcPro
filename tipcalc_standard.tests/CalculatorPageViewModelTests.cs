@@ -249,11 +249,10 @@ namespace tipcalc_standard.tests
             var myCalculatorViewModel = new CalculatorPageViewModel(myCalculator)
             {
                 TotalTxt = "149.36",
-                TipPercent = 15
+                TipPercent = 15,
+                NumberOfPersons = 1
             };
 
-            myCalculatorViewModel.SplitGrandTotal(1);
-            
             Assert.AreEqual(myCalculatorViewModel.TotalPerPersonTxt, myCalculatorViewModel.GrandTotalTxt);
         }
 
@@ -264,11 +263,10 @@ namespace tipcalc_standard.tests
             var myCalculatorViewModel = new CalculatorPageViewModel(myCalculator)
             {
                 TotalTxt = "100.00",
-                TipPercent = 10
+                TipPercent = 10,
+                NumberOfPersons = 2
             };
 
-            myCalculatorViewModel.SplitGrandTotal(2);
-            
             Assert.AreEqual("55.00", myCalculatorViewModel.TotalPerPersonTxt);
         }
 
@@ -279,10 +277,9 @@ namespace tipcalc_standard.tests
             var myCalculatorViewModel = new CalculatorPageViewModel(myCalculator)
             {
                 TotalTxt = "99.00",
-                TipPercent = 0
+                TipPercent = 0,
+                NumberOfPersons = 3
             };
-
-            myCalculatorViewModel.SplitGrandTotal(3);
 
             Assert.AreEqual("33.00", myCalculatorViewModel.TotalPerPersonTxt);
         }

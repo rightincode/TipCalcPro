@@ -98,6 +98,15 @@ namespace tipcalc_standard.ViewModels
             get { return _calculator.GrandTotal.ToString("F2"); }
         }
 
+        public int NumberOfPersons
+        {
+            get { return _calculator.NumberOfPersons;  }
+            set
+            {
+                _calculator.NumberOfPersons = value;
+                SplitGrandTotal();
+            }
+        }
         public string TotalPerPersonTxt
         {
             get { return _calculator.TotalPerPerson.ToString("F2"); }
@@ -107,17 +116,23 @@ namespace tipcalc_standard.ViewModels
         {
             _calculator.RoundTip();
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("GrandTotalTxt"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("NumberOfPersons"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TotalPerPersonTxt"));
         }
 
         public void UnRoundTip()
         {
             _calculator.UnRoundTip();
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("GrandTotalTxt"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("NumberOfPersons"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TotalPerPersonTxt"));
         }
 
-        public void SplitGrandTotal(int numberOfPersons)
+        private void SplitGrandTotal()
         {
-            _calculator.SplitGrandTotal(numberOfPersons);
+            _calculator.SplitGrandTotal();
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("NumberOfPersons"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TotalPerPersonTxt"));
         }
 
         public void ResetCalculator()
@@ -127,6 +142,8 @@ namespace tipcalc_standard.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TipTxt"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TipPercentTxt"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("GrandTotalTxt"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("NumberOfPersons"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TotalPerPersonTxt"));
         }
 
         private void CalculateTipPropertyChangedNotifications()
@@ -134,12 +151,16 @@ namespace tipcalc_standard.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TipTxt"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TipPercentTxt"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("GrandTotalTxt"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("NumberOfPersons"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TotalPerPersonTxt"));
         }
 
         private void CalculateTipPercentagePropertyChangedNotifications()
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TipPercentTxt"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("GrandTotalTxt"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("NumberOfPersons"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TotalPerPersonTxt"));
         }
 
     }

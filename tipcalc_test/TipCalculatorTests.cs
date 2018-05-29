@@ -151,6 +151,9 @@ namespace tipcalc_core.tests
             Assert.AreEqual(newTipCalculator.Tip, tipCalculator.Tip);
             Assert.AreEqual(newTipCalculator.TipPercent, tipCalculator.TipPercent);
             Assert.AreEqual(newTipCalculator.Total, tipCalculator.Total);
+            Assert.AreEqual(newTipCalculator.NumberOfPersons, tipCalculator.NumberOfPersons);
+            Assert.AreEqual(newTipCalculator.SavedGrandTotal, tipCalculator.SavedGrandTotal);
+            Assert.AreEqual(newTipCalculator.TotalPerPerson, tipCalculator.TotalPerPerson);
 
         }
 
@@ -222,11 +225,12 @@ namespace tipcalc_core.tests
             var tipCalculator = new TipCalculator
             {
                 Total = (decimal)149.36,
-                TipPercent = 15
+                TipPercent = 15,
+                NumberOfPersons = 1
             };
 
             tipCalculator.CalcTip();
-            tipCalculator.SplitGrandTotal(1);
+            tipCalculator.SplitGrandTotal();
 
             Assert.AreEqual(tipCalculator.TotalPerPerson, tipCalculator.GrandTotal);
 
@@ -238,11 +242,12 @@ namespace tipcalc_core.tests
             var tipCalculator = new TipCalculator
             {
                 Total = (decimal)149.36,
-                TipPercent = 15
+                TipPercent = 15,
+                NumberOfPersons = 2
             };
 
             tipCalculator.CalcTip();
-            tipCalculator.SplitGrandTotal(2);
+            tipCalculator.SplitGrandTotal();
 
             Assert.AreEqual(tipCalculator.TotalPerPerson, Math.Round((tipCalculator.GrandTotal/2), 2));
 
@@ -254,11 +259,12 @@ namespace tipcalc_core.tests
             var tipCalculator = new TipCalculator
             {
                 Total = (decimal)149.36,
-                TipPercent = 15
+                TipPercent = 15,
+                NumberOfPersons = 3
             };
 
             tipCalculator.CalcTip();
-            tipCalculator.SplitGrandTotal(3);
+            tipCalculator.SplitGrandTotal();
 
             Assert.AreEqual(tipCalculator.TotalPerPerson, Math.Round((tipCalculator.GrandTotal / 3), 2));
 
