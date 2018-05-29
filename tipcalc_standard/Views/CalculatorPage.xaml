@@ -57,12 +57,20 @@
                        WidthRequest="100"
                        FontSize="Medium"
                        VerticalTextAlignment="Center"></Label>
+                <Label x:Name="txtRounded" 
+                       Text="Rounded: "
+                       WidthRequest="100"
+                       FontSize="Medium"
+                       VerticalTextAlignment="Center"></Label>
+                <Switch x:Name="swtRounded"></Switch>                
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
                 <Button x:Name="btnResetTipCalculator"
                         Text="Reset"
                         WidthRequest="100"
                         FontSize="Medium"
                         VerticalOptions="Center"></Button>
-            </StackLayout>            
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -199,5 +199,20 @@ namespace tipcalc_core.tests
 
             Assert.AreEqual((decimal)171.76, tipCalculator.GrandTotal);
         }
+
+        [TestMethod]
+        public void RoundTipThenUnRound_Total49_36TipPercent15_GrandTotalEqualsSavedGrandTotal()
+        {
+            var tipCalculator = new TipCalculator
+            {
+                Total = (decimal)149.36,
+                TipPercent = 15
+            };
+
+            tipCalculator.RoundTip();
+            tipCalculator.CalcTip();
+
+            Assert.AreEqual(tipCalculator.SavedGrandTotal, tipCalculator.GrandTotal);
+        }
     }
 }
