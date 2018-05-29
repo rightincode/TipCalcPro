@@ -15,6 +15,8 @@
 
         void UnRoundTip();
 
+        void SplitGrandTotal(int numberOfPersons);
+
         void Reset();
     }
 }

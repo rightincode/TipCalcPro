@@ -21,6 +21,8 @@ namespace tipcalc_core.Models
 
         public decimal GrandTotal { get; private set; }
 
+        public decimal TotalPerPerson { get; private set; }
+
         public void CalcTip()
         {
             if (tipPercent > 0)
@@ -60,12 +62,18 @@ namespace tipcalc_core.Models
             SavedGrandTotal = 0;
         }
 
+        public void SplitGrandTotal(int numberOfPersons)
+        {
+            TotalPerPerson = Math.Round((GrandTotal / numberOfPersons), 2);
+        }
+
         public void Reset()
         {
             Total = 0;
             Tip = 0;
             TipPercent = 0;
             GrandTotal = 0;
+            TotalPerPerson = 0;
             SavedGrandTotal = 0;
         }
         

@@ -1,4 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using tipcalc_core.Models;
 
 namespace tipcalc_core.tests
@@ -214,5 +215,54 @@ namespace tipcalc_core.tests
 
             Assert.AreEqual(tipCalculator.SavedGrandTotal, tipCalculator.GrandTotal);
         }
+
+        [TestMethod]
+        public void SplitCheck_OnePerson_TotalPersonEqualsGrandTotal()
+        {
+            var tipCalculator = new TipCalculator
+            {
+                Total = (decimal)149.36,
+                TipPercent = 15
+            };
+
+            tipCalculator.CalcTip();
+            tipCalculator.SplitGrandTotal(1);
+
+            Assert.AreEqual(tipCalculator.TotalPerPerson, tipCalculator.GrandTotal);
+
+        }
+
+        [TestMethod]
+        public void SplitCheck_TwoPersons_TotalPersonEqualsOneHalfGrandTotal()
+        {
+            var tipCalculator = new TipCalculator
+            {
+                Total = (decimal)149.36,
+                TipPercent = 15
+            };
+
+            tipCalculator.CalcTip();
+            tipCalculator.SplitGrandTotal(2);
+
+            Assert.AreEqual(tipCalculator.TotalPerPerson, Math.Round((tipCalculator.GrandTotal/2), 2));
+
+        }
+
+        [TestMethod]
+        public void SplitCheck_ThreePersons_TotalPersonEqualsOneHalfGrandTotal()
+        {
+            var tipCalculator = new TipCalculator
+            {
+                Total = (decimal)149.36,
+                TipPercent = 15
+            };
+
+            tipCalculator.CalcTip();
+            tipCalculator.SplitGrandTotal(3);
+
+            Assert.AreEqual(tipCalculator.TotalPerPerson, Math.Round((tipCalculator.GrandTotal / 3), 2));
+
+        }
+
     }
 }
