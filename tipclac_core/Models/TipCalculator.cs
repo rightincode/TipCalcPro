@@ -59,7 +59,7 @@ namespace tipcalc_core.Models
             UpdateGrandTotal();
         }
 
-        public void RoundTip()
+        public void RoundTotal()
         {
             SavedGrandTotal = GrandTotal;
             SavedTip = Tip;
@@ -68,7 +68,7 @@ namespace tipcalc_core.Models
             SplitGrandTotal();
         }
 
-        public void UnRoundTip()
+        public void UnRoundTotal()
         {
             GrandTotal = SavedGrandTotal;
             SavedGrandTotal = 0;

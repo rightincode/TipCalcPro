@@ -168,7 +168,7 @@ namespace tipcalc_core.tests
             };
 
             tipCalculator.CalcTip();
-            tipCalculator.RoundTip();
+            tipCalculator.RoundTotal();
 
             Assert.AreEqual((decimal)172.00, tipCalculator.GrandTotal);
             Assert.AreEqual((decimal)22.64, tipCalculator.Tip);
@@ -184,7 +184,7 @@ namespace tipcalc_core.tests
             };
 
             tipCalculator.CalcTip();
-            tipCalculator.RoundTip();
+            tipCalculator.RoundTotal();
 
             Assert.AreEqual((decimal)176.00, tipCalculator.GrandTotal);
             Assert.AreEqual((decimal)26.64, tipCalculator.Tip);
@@ -200,8 +200,8 @@ namespace tipcalc_core.tests
             };
 
             tipCalculator.CalcTip();
-            tipCalculator.RoundTip();
-            tipCalculator.UnRoundTip();
+            tipCalculator.RoundTotal();
+            tipCalculator.UnRoundTotal();
 
             Assert.AreEqual((decimal)171.76, tipCalculator.GrandTotal);
             Assert.AreEqual((decimal)22.40, tipCalculator.Tip);
@@ -216,7 +216,7 @@ namespace tipcalc_core.tests
                 TipPercent = 15
             };
 
-            tipCalculator.RoundTip();
+            tipCalculator.RoundTotal();
             tipCalculator.CalcTip();
 
             Assert.AreEqual((decimal)171.76, tipCalculator.GrandTotal);

@@ -206,7 +206,7 @@ namespace tipcalc_standard.tests
                 TipPercent = 15
             };
 
-            myCalculatorViewModel.RoundTip();
+            myCalculatorViewModel.RoundTotal();
 
             Assert.AreEqual("172.00", myCalculatorViewModel.GrandTotalTxt);
             Assert.AreEqual("22.64", myCalculatorViewModel.TipTxt);
@@ -222,7 +222,7 @@ namespace tipcalc_standard.tests
                 TipPercent = 18
             };
 
-            myCalculatorViewModel.RoundTip();
+            myCalculatorViewModel.RoundTotal();
 
             Assert.AreEqual("176.00", myCalculatorViewModel.GrandTotalTxt);
             Assert.AreEqual("26.64", myCalculatorViewModel.TipTxt);
@@ -238,8 +238,8 @@ namespace tipcalc_standard.tests
                 TipPercent = 15
             };
 
-            myCalculatorViewModel.RoundTip();
-            myCalculatorViewModel.UnRoundTip();
+            myCalculatorViewModel.RoundTotal();
+            myCalculatorViewModel.UnRoundTotal();
 
             Assert.AreEqual("171.76", myCalculatorViewModel.GrandTotalTxt);
             Assert.AreEqual("22.40", myCalculatorViewModel.TipTxt);

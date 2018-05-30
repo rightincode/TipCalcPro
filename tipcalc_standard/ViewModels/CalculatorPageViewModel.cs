@@ -112,18 +112,18 @@ namespace tipcalc_standard.ViewModels
             get { return _calculator.TotalPerPerson.ToString("F2"); }
         }
 
-        public void RoundTip()
+        public void RoundTotal()
         {
-            _calculator.RoundTip();
+            _calculator.RoundTotal();
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TipTxt"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("GrandTotalTxt"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("NumberOfPersons"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TotalPerPersonTxt"));
         }
 
-        public void UnRoundTip()
+        public void UnRoundTotal()
         {
-            _calculator.UnRoundTip();
+            _calculator.UnRoundTotal();
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TipTxt"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("GrandTotalTxt"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("NumberOfPersons"));

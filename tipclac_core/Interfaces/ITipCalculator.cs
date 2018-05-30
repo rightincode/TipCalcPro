@@ -15,9 +15,9 @@
 
         void CalcTipPercentage();
 
-        void RoundTip();
+        void RoundTotal();
 
-        void UnRoundTip();
+        void UnRoundTotal();
 
         void SplitGrandTotal();
 

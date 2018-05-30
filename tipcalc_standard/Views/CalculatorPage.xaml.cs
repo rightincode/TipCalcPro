@@ -58,11 +58,11 @@ namespace tipcalc_standard.Views
             {
                 if (roundedSwitch.IsToggled)
                 {
-                    VM.RoundTip();
+                    VM.RoundTotal();
                 }
                 else
                 {
-                    VM.UnRoundTip();
+                    VM.UnRoundTotal();
                 }
             }
         }
