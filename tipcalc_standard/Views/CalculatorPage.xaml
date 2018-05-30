@@ -39,7 +39,7 @@
                         Title="Select a Tip%"
                         ItemsSource="{Binding TipPresets}"
                         ItemDisplayBinding="{Binding TipPercentageTxt}"
-                        WidthRequest="125"
+                        WidthRequest="135"
                         FontSize="Medium"></Picker>
             </StackLayout>
             <Slider x:Name="sldTipCalc"
@@ -51,22 +51,24 @@
                        Text="Grand Total: " 
                        WidthRequest="100"
                        FontSize="Medium"
-                       VerticalTextAlignment="Center"></Label>
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="End"></Label>
                 <Label x:Name="txtGrandTotal" 
                        Text="{Binding GrandTotalTxt, Mode=OneWay}"
                        WidthRequest="100"
                        FontSize="Medium"
                        VerticalTextAlignment="Center"></Label>
                 <Label x:Name="txtRounded" 
-                       Text="Rounded: "
+                       Text="Round: "
                        WidthRequest="100"
                        FontSize="Medium"
-                       VerticalTextAlignment="Center"></Label>
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="End"></Label>
                 <Switch x:Name="swtRounded"></Switch>                
             </StackLayout>
             <StackLayout Orientation="Horizontal">
                 <Label x:Name="lblNumberOfPersons" 
-                       Text="# Of Persons: " 
+                       Text="# of Persons: " 
                        WidthRequest="100"
                        FontSize="Medium"
                        VerticalTextAlignment="Center"></Label>
