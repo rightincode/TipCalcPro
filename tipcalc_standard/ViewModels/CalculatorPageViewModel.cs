@@ -115,6 +115,7 @@ namespace tipcalc_standard.ViewModels
         public void RoundTip()
         {
             _calculator.RoundTip();
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TipTxt"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("GrandTotalTxt"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("NumberOfPersons"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TotalPerPersonTxt"));
@@ -123,6 +124,7 @@ namespace tipcalc_standard.ViewModels
         public void UnRoundTip()
         {
             _calculator.UnRoundTip();
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TipTxt"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("GrandTotalTxt"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("NumberOfPersons"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TotalPerPersonTxt"));

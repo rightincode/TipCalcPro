@@ -96,8 +96,7 @@ namespace tipcalc_core.Models
         
         private void UpdateGrandTotal()
         {
-            SavedGrandTotal = GrandTotal = Total + Tip;
-            SavedTip = Tip;
+            GrandTotal = Total + Tip;
             SplitGrandTotal();
         }
     }
