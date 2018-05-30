@@ -4,8 +4,10 @@
     {
         decimal Total { get; set; }
         decimal Tip { get; set; }
+        decimal SavedTip { get; }
         decimal TipPercent { get; set; }
-        decimal GrandTotal { get; }        
+        decimal GrandTotal { get; }
+        decimal SavedGrandTotal { get; }
         int NumberOfPersons { get; set; }
         decimal TotalPerPerson { get; }
 

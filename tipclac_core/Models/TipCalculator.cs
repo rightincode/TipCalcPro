@@ -16,6 +16,8 @@ namespace tipcalc_core.Models
 
         public decimal Tip { get; set; }
 
+        public decimal SavedTip { get; set; }
+
         public decimal TipPercent
         {
             get { return tipPercent; }
@@ -60,7 +62,9 @@ namespace tipcalc_core.Models
         public void RoundTip()
         {
             SavedGrandTotal = GrandTotal;
+            SavedTip = Tip;
             GrandTotal = Math.Round(GrandTotal);
+            Tip = (GrandTotal > Total) ? GrandTotal - Total : 0 ;
             SplitGrandTotal();
         }
 
@@ -68,6 +72,8 @@ namespace tipcalc_core.Models
         {
             GrandTotal = SavedGrandTotal;
             SavedGrandTotal = 0;
+            Tip = SavedTip;
+            SavedTip = 0;
             SplitGrandTotal();
         }
 
@@ -85,11 +91,13 @@ namespace tipcalc_core.Models
             NumberOfPersons = 1;
             TotalPerPerson = 0;
             SavedGrandTotal = 0;
+            SavedTip = 0;
         }
         
         private void UpdateGrandTotal()
         {
             SavedGrandTotal = GrandTotal = Total + Tip;
+            SavedTip = Tip;
             SplitGrandTotal();
         }
     }

@@ -153,12 +153,13 @@ namespace tipcalc_core.tests
             Assert.AreEqual(newTipCalculator.Total, tipCalculator.Total);
             Assert.AreEqual(newTipCalculator.NumberOfPersons, tipCalculator.NumberOfPersons);
             Assert.AreEqual(newTipCalculator.SavedGrandTotal, tipCalculator.SavedGrandTotal);
+            Assert.AreEqual(newTipCalculator.SavedTip, tipCalculator.SavedTip);
             Assert.AreEqual(newTipCalculator.TotalPerPerson, tipCalculator.TotalPerPerson);
 
         }
 
         [TestMethod]
-        public void RoundTip_Total49_36TipPercent15_GrandTotal172()
+        public void RoundTip_Total49_36TipPercent15_GrandTotal172TipShouldBe22_64()
         {
             var tipCalculator = new TipCalculator
             {
@@ -170,11 +171,11 @@ namespace tipcalc_core.tests
             tipCalculator.RoundTip();
 
             Assert.AreEqual((decimal)172.00, tipCalculator.GrandTotal);
-
+            Assert.AreEqual((decimal)22.64, tipCalculator.Tip);
         }
 
         [TestMethod]
-        public void RoundTip_Total49_36TipPercent18_GrandTotal176()
+        public void RoundTip_Total49_36TipPercent18_GrandTotal176TipShouldBe26_64()
         {
             var tipCalculator = new TipCalculator
             {
@@ -186,10 +187,11 @@ namespace tipcalc_core.tests
             tipCalculator.RoundTip();
 
             Assert.AreEqual((decimal)176.00, tipCalculator.GrandTotal);
+            Assert.AreEqual((decimal)26.64, tipCalculator.Tip);
         }
 
         [TestMethod]
-        public void RoundTipThenUnRound_Total49_36TipPercent15_GrandTotal171_76()
+        public void RoundTipThenUnRound_Total49_36TipPercent15_GrandTotal171_76TipShouldBe22_40()
         {
             var tipCalculator = new TipCalculator
             {
@@ -202,10 +204,11 @@ namespace tipcalc_core.tests
             tipCalculator.UnRoundTip();
 
             Assert.AreEqual((decimal)171.76, tipCalculator.GrandTotal);
+            Assert.AreEqual((decimal)22.40, tipCalculator.Tip);
         }
 
         [TestMethod]
-        public void RoundTipThenUnRound_Total49_36TipPercent15_GrandTotalEqualsSavedGrandTotal()
+        public void RoundTipThenCalcTip_Total49_36TipPercent15_GrandTotalEqualsSavedGrandTotalTipEqualsSavedTip()
         {
             var tipCalculator = new TipCalculator
             {
@@ -217,6 +220,7 @@ namespace tipcalc_core.tests
             tipCalculator.CalcTip();
 
             Assert.AreEqual(tipCalculator.SavedGrandTotal, tipCalculator.GrandTotal);
+            Assert.AreEqual(tipCalculator.SavedTip, tipCalculator.Tip);
         }
 
         [TestMethod]
