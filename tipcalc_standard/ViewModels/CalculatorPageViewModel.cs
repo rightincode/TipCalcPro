@@ -143,6 +143,7 @@ namespace tipcalc_standard.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TotalTxt"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TipTxt"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TipPercentTxt"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TipPercent"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("GrandTotalTxt"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("NumberOfPersons"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TotalPerPersonTxt"));
