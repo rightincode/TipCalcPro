@@ -25,7 +25,12 @@ namespace tipcalc_standard.tests.Models
             }
         };
 
-        public TipDatabaseMock(){}
+        private readonly IFileHelper _fileHelper;
+
+        public TipDatabaseMock(IFileHelper fileHelper)
+        {
+            _fileHelper = fileHelper;       
+        }
         
         public Task<int> DeleteTipCalcTransactionAsync(ITipCalcTransaction tipCalcTransaction)
         {
