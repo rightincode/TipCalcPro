@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using SQLite;
 using tipcalc_core.Interfaces;
@@ -10,11 +11,19 @@ namespace tipcalc_data.Models
     public class TipDatabase : ITipDatabase
     {
         private SQLiteAsyncConnection _databaseConnection;
-         
+
         public TipDatabase(IFileHelper fileHelper)
         {
             _databaseConnection = new SQLiteAsyncConnection(fileHelper.GetLocalFilePath("TipCalcTransactions.db3"));
-            _databaseConnection.CreateTableAsync<TipCalcTransaction>().Wait();
+
+            try
+            {
+                _databaseConnection.CreateTableAsync<TipCalcTransaction>().Wait();
+            }
+            catch (SQLiteException ex)
+            {
+                Debug.WriteLine(ex.Message);
+            };            
         }
 
         public Task<int> DeleteTipCalcTransactionAsync(ITipCalcTransaction tipCalcTransaction)
@@ -37,7 +46,8 @@ namespace tipcalc_data.Models
             if (tipCalcTransaction.Id > 0)
             {
                 return _databaseConnection.UpdateAsync(tipCalcTransaction);
-            } else
+            }
+            else
             {
                 return _databaseConnection.InsertAsync(tipCalcTransaction);
             }

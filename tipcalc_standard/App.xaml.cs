@@ -2,6 +2,8 @@
 using Microsoft.Extensions.DependencyInjection;
 using tipcalc_core.Interfaces;
 using tipcalc_core.Models;
+using tipcalc_data.Interfaces;
+using tipcalc_data.Models;
 using tipcalc_standard.Views;
 
 using Xamarin.Forms;
@@ -10,6 +12,7 @@ namespace tipcalc
 {
     public partial class App : Application
     {
+        private readonly IFileHelper _fileHelper = DependencyService.Get<IFileHelper>();
 
         public IServiceProvider ServiceProvider { get; private set; }
 
@@ -40,6 +43,8 @@ namespace tipcalc
         {
             var services = new ServiceCollection();
             services.AddTransient<ITipCalculator, TipCalculator>();
+            services.AddTransient<ITipCalcTransaction, TipCalcTransaction>();
+            services.AddTransient<ITipDatabase>(s => new TipDatabase(_fileHelper));
             ServiceProvider = services.BuildServiceProvider();
         }
     }

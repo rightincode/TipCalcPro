@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using tipcalc_standard.ViewModels;
 using tipcalc_core.Interfaces;
@@ -39,8 +34,8 @@ namespace tipcalc_standard.Views
                     break;
 
                 case 1:
-                    item.TargetType = typeof(CalculatorPage);
-                    page = new CalculatorPage(((tipcalc.App)Application.Current).ServiceProvider.GetService<ITipCalculator>());
+                    //item.TargetType = typeof(CalculatorPage);
+                    page = new CalculatorPage();
                     break;
 
                 default:

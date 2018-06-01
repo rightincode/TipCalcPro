@@ -4,7 +4,7 @@ namespace tipcalc_core.Interfaces
 {
     public interface ITipCalcTransaction
     {
-        decimal Id { get; set; }
+        int Id { get; set; }
 
         decimal Total { get; set; }
         decimal Tip { get; set; }

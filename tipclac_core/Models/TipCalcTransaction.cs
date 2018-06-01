@@ -8,7 +8,7 @@ namespace tipcalc_core.Models
     public class TipCalcTransaction : ITipCalcTransaction
     {
         [PrimaryKey, AutoIncrement]
-        public decimal Id { get ; set; }
+        public int Id { get ; set; }
 
         public decimal Total { get ; set ; }
         public decimal Tip { get ; set ; }

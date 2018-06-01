@@ -12,10 +12,4 @@
     <PackageReference Include="MSTest.TestFramework" Version="1.2.1" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\tipcalc_data\tipcalc_data.csproj" />
-    <ProjectReference Include="..\tipcalc_standard\tipcalc_standard.csproj" />
-    <ProjectReference Include="..\tipclac_core\tipcalc_core.csproj" />
-  </ItemGroup>
-
 </Project>

@@ -1,19 +1,25 @@
 ﻿using System;
 using tipcalc_standard.ViewModels;
 using tipcalc_core.Interfaces;
+using tipcalc_data.Interfaces;
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
 namespace tipcalc_standard.Views
 {
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CalculatorPage : ContentPage
     {
+        private readonly ITipCalculator _tipCalculator = ((tipcalc.App)Application.Current).ServiceProvider.GetService<ITipCalculator>();
+        private readonly ITipCalcTransaction _tipCalcTransaction = ((tipcalc.App)Application.Current).ServiceProvider.GetService<ITipCalcTransaction>();
+        private readonly ITipDatabase _tipDatabase = ((tipcalc.App)Application.Current).ServiceProvider.GetService<ITipDatabase>();
 
         public CalculatorPageViewModel VM { get; }
 
-        public CalculatorPage(ITipCalculator tipCalculator)
+        public CalculatorPage()
         {
             InitializeComponent();
-            VM = new CalculatorPageViewModel(tipCalculator);
+            VM = new CalculatorPageViewModel(_tipCalculator, _tipCalcTransaction, _tipDatabase);
             InitializeEventHandlers();
             BindingContext = VM;
         }

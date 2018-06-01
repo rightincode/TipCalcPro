@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Threading.Tasks;
 using tipcalc_core.Interfaces;
+using tipcalc_data.Interfaces;
+using Xamarin.Forms;
 
 namespace tipcalc_standard.ViewModels
 {
@@ -10,10 +13,16 @@ namespace tipcalc_standard.ViewModels
         private string totalTxt;
         private string tipTxt;
         private readonly ITipCalculator _calculator;
-
-        public CalculatorPageViewModel(ITipCalculator tipCalculator)
+        private readonly ITipDatabase _tipDatabase;
+        private ITipCalcTransaction _tipCalcTransaction;
+        
+        public CalculatorPageViewModel(ITipCalculator tipCalculator, 
+            ITipCalcTransaction tipCalcTransaction,
+            ITipDatabase tipDatabase)
         {
             _calculator = tipCalculator;
+            _tipCalcTransaction = tipCalcTransaction;
+            _tipDatabase = tipDatabase;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -107,6 +116,7 @@ namespace tipcalc_standard.ViewModels
                 SplitGrandTotal();
             }
         }
+
         public string TotalPerPersonTxt
         {
             get { return _calculator.TotalPerPerson.ToString("F2"); }
@@ -149,6 +159,21 @@ namespace tipcalc_standard.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TotalPerPersonTxt"));
         }
 
+        public async Task<int> SaveTipTransaction()
+        {
+            _tipCalcTransaction.Id = 0;
+            _tipCalcTransaction.GrandTotal = _calculator.GrandTotal;
+            _tipCalcTransaction.NumOfPersons = _calculator.NumberOfPersons;
+            _tipCalcTransaction.Saved = DateTime.UtcNow;            
+            _tipCalcTransaction.Split = (NumberOfPersons > 0 ) ? true : false;
+            _tipCalcTransaction.Tip = _calculator.Tip;
+            _tipCalcTransaction.TipPercent = _calculator.TipPercent;
+            _tipCalcTransaction.Total = _calculator.Total;
+            _tipCalcTransaction.TotalPerPerson = _calculator.TotalPerPerson;
+            
+            return await _tipDatabase.SaveTipCalcTransactionAsync(_tipCalcTransaction);
+        }
+
         private void CalculateTipPropertyChangedNotifications()
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TipTxt"));
@@ -166,5 +191,6 @@ namespace tipcalc_standard.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TotalPerPersonTxt"));
         }
 
+        
     }
 }
