@@ -1,11 +1,11 @@
 ﻿using System;
-using tipcalc_standard.ViewModels;
+using tipcalcapp.ViewModels;
 using tipcalc_core.Interfaces;
 using tipcalc_data.Interfaces;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace tipcalc_standard.Views
+namespace tipcalcapp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CalculatorPage : ContentPage

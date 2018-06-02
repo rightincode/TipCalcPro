@@ -5,7 +5,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
 
-namespace tipcalc_standard.ViewModels
+namespace tipcalcapp.ViewModels
 {
     public class MainPageMasterViewModel : INotifyPropertyChanged
     {

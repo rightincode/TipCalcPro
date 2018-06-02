@@ -14,7 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\tipcalc_data\tipcalc_data.csproj" />
-    <ProjectReference Include="..\tipcalc_standard\tipcalc_standard.csproj" />
+    <ProjectReference Include="..\tipcalc_standard\tipcalcapp.csproj" />
     <ProjectReference Include="..\tipclac_core\tipcalc_core.csproj" />
   </ItemGroup>
 

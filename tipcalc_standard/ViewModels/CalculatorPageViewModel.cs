@@ -6,7 +6,7 @@ using tipcalc_core.Interfaces;
 using tipcalc_data.Interfaces;
 using Xamarin.Forms;
 
-namespace tipcalc_standard.ViewModels
+namespace tipcalcapp.ViewModels
 {
     public class CalculatorPageViewModel : INotifyPropertyChanged
     {

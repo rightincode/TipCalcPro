@@ -7,12 +7,12 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-using tipcalc_standard.ViewModels;
+using tipcalcapp.ViewModels;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace tipcalc_standard.Views
+namespace tipcalcapp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPageMaster : ContentPage

@@ -5,7 +5,7 @@ using tipcalc_core.Interfaces;
 using tipcalc_core.Models;
 using tipcalc_data.Interfaces;
 
-namespace tipcalc_standard.tests.Models
+namespace tipcalcapp.tests.Models
 {
     public class TipDatabaseMock : ITipDatabase
     {

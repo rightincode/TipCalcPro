@@ -1,10 +1,10 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Threading.Tasks;
 using tipcalc_core.Models;
-using tipcalc_standard.tests.Models;
-using tipcalc_standard.ViewModels;
+using tipcalcapp.tests.Models;
+using tipcalcapp.ViewModels;
 
-namespace tipcalc_standard.tests
+namespace tipcalcapp.tests
 {
     [TestClass]
     public class CalculatorPageViewModelTests

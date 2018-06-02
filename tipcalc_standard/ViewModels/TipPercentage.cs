@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace tipcalc_standard.ViewModels
+namespace tipcalcapp.ViewModels
 {
     public class TipPercentage
     {

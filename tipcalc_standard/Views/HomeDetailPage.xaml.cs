@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace tipcalc_standard.Views
+namespace tipcalcapp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class HomeDetailPage : ContentPage

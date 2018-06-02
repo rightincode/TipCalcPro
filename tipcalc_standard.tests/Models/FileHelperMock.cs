@@ -1,6 +1,6 @@
 ﻿using tipcalc_data.Interfaces;
 
-namespace tipcalc_standard.tests.Models
+namespace tipcalcapp.tests.Models
 {
     public class FileHelperMock : IFileHelper
     {

@@ -4,7 +4,7 @@ using tipcalc_core.Interfaces;
 using tipcalc_core.Models;
 using tipcalc_data.Interfaces;
 using tipcalc_data.Models;
-using tipcalc_standard.Views;
+using tipcalcapp.Views;
 
 using Xamarin.Forms;
 

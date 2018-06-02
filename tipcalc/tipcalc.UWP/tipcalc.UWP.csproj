@@ -157,9 +157,9 @@
       <Project>{da88561f-7d76-4ce2-97a0-84fa8669ef70}</Project>
       <Name>tipcalc_data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\tipcalc_standard\tipcalc_standard.csproj">
+    <ProjectReference Include="..\..\tipcalc_standard\tipcalcapp.csproj">
       <Project>{7906df06-d354-466a-8bf5-9a801e0bfe7b}</Project>
-      <Name>tipcalc_standard</Name>
+      <Name>tipcalcapp</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
