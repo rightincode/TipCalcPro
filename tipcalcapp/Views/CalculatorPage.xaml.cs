@@ -3,6 +3,7 @@ using tipcalcapp.ViewModels;
 using tipcalc_core.Interfaces;
 using tipcalc_data.Interfaces;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace tipcalcapp.Views
@@ -19,6 +20,7 @@ namespace tipcalcapp.Views
         public CalculatorPage()
         {
             InitializeComponent();
+            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             VM = new CalculatorPageViewModel(_tipCalculator, _tipCalcTransaction, _tipDatabase);
             InitializeEventHandlers();
             BindingContext = VM;
@@ -36,7 +38,7 @@ namespace tipcalcapp.Views
 
         private void OnTipPercentPresetSelectedIndexChanged(Object sender, EventArgs e)
         {
-            var TipPercentPresetPicker = (Picker)sender;
+            var TipPercentPresetPicker = (Xamarin.Forms.Picker)sender;
             var SelectedTipPercentPreset = (TipPercentage)TipPercentPresetPicker.SelectedItem;
 
             if (SelectedTipPercentPreset != null)

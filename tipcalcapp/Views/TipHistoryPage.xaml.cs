@@ -1,5 +1,7 @@
 ﻿using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
+
 using tipcalcapp.ViewModels;
 using tipcalc_data.Interfaces;
 
@@ -15,6 +17,7 @@ namespace tipcalcapp.Views
         public TipHistoryPage ()
 		{
 			InitializeComponent();
+            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             VM = new TipHistoryPageViewModel(_tipDatabase);
             BindingContext = VM;
             VM.LoadTipHistory();
