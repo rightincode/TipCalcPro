@@ -29,5 +29,15 @@ namespace tipcalcapp.tests
             Assert.IsNotNull(myTipHistoryViewModel.TipCalcTransactions);
             Assert.IsTrue(myTipHistoryViewModel.TipCalcTransactions.Count > 0);
         }
+
+        [TestMethod]
+        public async Task LoadViewModelHistory_ValidTipHistory_ListOfTipHistoryTransactionsInDecendingOrderBySaved()
+        {
+            var myTipHistoryViewModel = new TipHistoryPageViewModel(myTipDatabase);
+
+            await myTipHistoryViewModel.LoadTipHistory();
+
+            Assert.AreEqual(2, myTipHistoryViewModel.TipCalcTransactions[0].Id);
+        }
     }
 }

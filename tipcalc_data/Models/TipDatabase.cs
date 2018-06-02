@@ -38,7 +38,7 @@ namespace tipcalc_data.Models
 
         public Task<List<TipCalcTransaction>> GetTipCalcTransactionsAsync()
         {
-            return _databaseConnection.Table<TipCalcTransaction>().ToListAsync();
+            return _databaseConnection.Table<TipCalcTransaction>().OrderByDescending(tct => tct.Saved).ToListAsync();
         }
 
         public Task<int> SaveTipCalcTransactionAsync(ITipCalcTransaction tipCalcTransaction)

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Linq;
 using tipcalc_core.Interfaces;
 using tipcalc_core.Models;
 using tipcalc_data.Interfaces;
@@ -22,6 +23,18 @@ namespace tipcalcapp.tests.Models
                 TipPercent = 10,
                 Total = 100,
                 TotalPerPerson = 110
+            },
+            new TipCalcTransaction
+            {
+                Id = 2,
+                GrandTotal = 220,
+                NumOfPersons = 1,
+                Saved = DateTime.UtcNow,
+                Split = false,
+                Tip = 10,
+                TipPercent = 10,
+                Total = 200,
+                TotalPerPerson = 220
             }
         };
 
@@ -58,7 +71,7 @@ namespace tipcalcapp.tests.Models
         {
             return Task.Run(() =>
             {
-                return _database;
+                return _database.OrderByDescending(tct => tct.Saved).ToList();
             });
         }
 
