@@ -93,6 +93,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FileHelper.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -152,6 +153,10 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\tipcalc_data\tipcalc_data.csproj">
+      <Project>{da88561f-7d76-4ce2-97a0-84fa8669ef70}</Project>
+      <Name>tipcalc_data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\tipcalc_standard\tipcalc_standard.csproj">
       <Project>{7906df06-d354-466a-8bf5-9a801e0bfe7b}</Project>
       <Name>tipcalc_standard</Name>
@@ -163,6 +168,9 @@
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.0.7</Version>
+    </PackageReference>
+    <PackageReference Include="sqlite-net-pcl">
+      <Version>1.4.118</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Forms">
       <Version>3.0.0.482510</Version>
