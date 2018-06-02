@@ -4,7 +4,30 @@
              x:Class="tipcalcapp.Views.TipHistoryPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Tip History Page" />
+            <ListView x:Name="TipTransactionListView"
+                      ItemsSource="{Binding TipCalcTransactions}"
+                      RowHeight="100">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="15,10">
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Date: " FontSize="Small" FontAttributes="Bold"></Label>
+                                    <Label Text="{Binding Saved, StringFormat='{0:d}'}" FontSize="Small"></Label>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Total Payment: " FontSize="Small" FontAttributes="Bold"></Label>
+                                    <Label Text="{Binding GrandTotal, StringFormat='{0:c}'}" FontSize="Small"></Label>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Tip %: " FontSize="Small" FontAttributes="Bold"></Label>
+                                    <Label Text="{Binding TipPercent, StringFormat='{0:f2}'}" FontSize="Small"></Label>
+                                </StackLayout>                                
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
