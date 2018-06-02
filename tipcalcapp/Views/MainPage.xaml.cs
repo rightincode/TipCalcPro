@@ -34,8 +34,11 @@ namespace tipcalcapp.Views
                     break;
 
                 case 1:
-                    //item.TargetType = typeof(CalculatorPage);
                     page = new CalculatorPage();
+                    break;
+
+                case 2:
+                    page = new TipHistoryPage();
                     break;
 
                 default:

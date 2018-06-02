@@ -106,6 +106,7 @@
     <None Include="tipcalc.UWP_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="baseline_list_black_18dp.png" />
     <Content Include="baseline_payment_black_18dp.png" />
     <Content Include="baseline_globe_black_18dp.png" />
     <Content Include="baseline_home_black_18dp.png" />
