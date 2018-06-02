@@ -30,7 +30,8 @@ namespace tipcalcapp.Views
             btnResetTipCalculator.Clicked += OnBtnResetTipCalculatorClicked;
             swtRounded.Toggled += OnSwtRoundedToggled;
             sldTipCalc.ValueChanged += OnSldTipCalcValueChanged;
-            stpNumberOfPersons.ValueChanged += OnStpNumberOfPersonsValueChanged;            
+            stpNumberOfPersons.ValueChanged += OnStpNumberOfPersonsValueChanged;
+            btnSaveTipTransaction.Clicked += OnBtnSaveTipTransactionClicked;
         }
 
         private void OnTipPercentPresetSelectedIndexChanged(Object sender, EventArgs e)
@@ -84,6 +85,15 @@ namespace tipcalcapp.Views
 
         private void OnStpNumberOfPersonsValueChanged(object sender, ValueChangedEventArgs e)
         {
+        }
+
+        private async void OnBtnSaveTipTransactionClicked(object sender, EventArgs e)
+        {
+            int result = await VM.SaveTipTransaction();
+            if (result > 0)
+            {
+                VM.ResetCalculator();
+            }
         }
     }
 }

@@ -96,6 +96,11 @@
                        VerticalTextAlignment="Center"></Label>                
             </StackLayout>
             <StackLayout Orientation="Horizontal">
+                <Button x:Name="btnSaveTipTransaction"
+                        Text="Save"
+                        WidthRequest="100"
+                        FontSize="Medium"
+                        VerticalOptions="Center"></Button>
                 <Button x:Name="btnResetTipCalculator"
                         Text="Reset"
                         WidthRequest="100"
