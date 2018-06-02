@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 using tipcalc_core.Models;
+using tipcalc_standard.tests.Models;
 using tipcalc_standard.ViewModels;
 
 namespace tipcalc_standard.tests
@@ -8,11 +9,22 @@ namespace tipcalc_standard.tests
     [TestClass]
     public class CalculatorPageViewModelTests
     {
+        TipCalculator myCalculator;
+        TipCalcTransaction myTipCalcTransaction;
+        TipDatabaseMock myTipDatabase;
+        
+        [TestInitialize]
+        public void Initialize()
+        {
+            myCalculator = new TipCalculator();
+            myTipCalcTransaction = new TipCalcTransaction();
+            myTipDatabase = new TipDatabaseMock(new FileHelperMock());
+        }
+
         [TestMethod]
         public void SetTotalText_ValidPositiveNumericalEntry_CalculatorContainsMatchingTotalDecimalValue()
         {
-            var myCalculator = new TipCalculator();
-            var myCalculatorViewModel = new CalculatorPageViewModel(myCalculator)
+            var myCalculatorViewModel = new CalculatorPageViewModel(myCalculator, myTipCalcTransaction, myTipDatabase)
             {
                 TotalTxt = "55.34"
             };
@@ -24,8 +36,7 @@ namespace tipcalc_standard.tests
         [TestMethod]
         public void SetTotalText_ValidNegativeNumericalEntry_CalculatorContainsMatchingTotalDecimalValue()
         {
-            var myCalculator = new TipCalculator();
-            var myCalculatorViewModel = new CalculatorPageViewModel(myCalculator)
+            var myCalculatorViewModel = new CalculatorPageViewModel(myCalculator, myTipCalcTransaction, myTipDatabase)
             {
                 TotalTxt = "-55.34"
             };
@@ -37,8 +48,7 @@ namespace tipcalc_standard.tests
         [TestMethod]
         public void SetTotalText_InValidEntry_CalculatorContainsZeroForTotal()
         {
-            var myCalculator = new TipCalculator();
-            var myCalculatorViewModel = new CalculatorPageViewModel(myCalculator)
+            var myCalculatorViewModel = new CalculatorPageViewModel(myCalculator, myTipCalcTransaction, myTipDatabase)
             {
                 TotalTxt = "ABCD"
             };
@@ -50,8 +60,7 @@ namespace tipcalc_standard.tests
         [TestMethod]
         public void SetTipText_ValidPositiveNumericalEntry_CalculatorContainsMatchingTipDecimalValue()
         {
-            var myCalculator = new TipCalculator();
-            var myCalculatorViewModel = new CalculatorPageViewModel(myCalculator)
+            var myCalculatorViewModel = new CalculatorPageViewModel(myCalculator, myTipCalcTransaction, myTipDatabase)
             {
                 TipTxt = "5.34"
             };
@@ -63,8 +72,7 @@ namespace tipcalc_standard.tests
         [TestMethod]
         public void SetTipText_ValidNegativeNumericalEntry_CalculatorContainsMatchingTipDecimalValue()
         {
-            var myCalculator = new TipCalculator();
-            var myCalculatorViewModel = new CalculatorPageViewModel(myCalculator)
+            var myCalculatorViewModel = new CalculatorPageViewModel(myCalculator, myTipCalcTransaction, myTipDatabase)
             {
                 TipTxt = "-5.34"
             };
@@ -76,8 +84,7 @@ namespace tipcalc_standard.tests
         [TestMethod]
         public void SetTipText_InValidEntry_CalculatorContainsZeroForTip()
         {
-            var myCalculator = new TipCalculator();
-            var myCalculatorViewModel = new CalculatorPageViewModel(myCalculator)
+            var myCalculatorViewModel = new CalculatorPageViewModel(myCalculator, myTipCalcTransaction, myTipDatabase)
             {
                 TipTxt = "ABCD"
             };
@@ -89,8 +96,7 @@ namespace tipcalc_standard.tests
         [TestMethod]
         public void SetTipPercent_ValidPositiveNumericalEntry_CalculatorContainsMatchingTipDecimalValue()
         {
-            var myCalculator = new TipCalculator();
-            var myCalculatorViewModel = new CalculatorPageViewModel(myCalculator)
+            var myCalculatorViewModel = new CalculatorPageViewModel(myCalculator, myTipCalcTransaction, myTipDatabase)
             {
                 TipPercent = 10
             };
@@ -101,8 +107,7 @@ namespace tipcalc_standard.tests
         [TestMethod]
         public void SetTipPercent_ValidNegativeNumericalEntry_CalculatorContainsMatchingTipDecimalValue()
         {
-            var myCalculator = new TipCalculator();
-            var myCalculatorViewModel = new CalculatorPageViewModel(myCalculator)
+            var myCalculatorViewModel = new CalculatorPageViewModel(myCalculator, myTipCalcTransaction, myTipDatabase)
             {
                 TipPercent = -10
             };
@@ -113,8 +118,7 @@ namespace tipcalc_standard.tests
         [TestMethod]
         public void Calculate10PercentTipOn100Total_ValidInput_TipIs10Dollars_TotalIs110Dollars()
         {
-            var myCalculator = new TipCalculator();
-            var myCalculatorViewModel = new CalculatorPageViewModel(myCalculator)
+            var myCalculatorViewModel = new CalculatorPageViewModel(myCalculator, myTipCalcTransaction, myTipDatabase)
             {
                 TotalTxt = "100",
                 TipPercent = 10
@@ -129,8 +133,7 @@ namespace tipcalc_standard.tests
         [TestMethod]
         public void Calculate18PercentTipOn35Total_ValidInput_TipIs6_30Dollars_TotalIs41_30Dollars()
         {
-            var myCalculator = new TipCalculator();
-            var myCalculatorViewModel = new CalculatorPageViewModel(myCalculator)
+            var myCalculatorViewModel = new CalculatorPageViewModel(myCalculator, myTipCalcTransaction, myTipDatabase)
             {
                 TotalTxt = "35",
                 TipPercent = 18
@@ -145,8 +148,7 @@ namespace tipcalc_standard.tests
         [TestMethod]
         public void CalculateTipPercentageFor10DollarTipOn100Total_ValidInput_TipPercentageIs10_TotalIs110Dollars()
         {
-            var myCalculator = new TipCalculator();
-            var myCalculatorViewModel = new CalculatorPageViewModel(myCalculator)
+            var myCalculatorViewModel = new CalculatorPageViewModel(myCalculator, myTipCalcTransaction, myTipDatabase)
             {
                 TotalTxt = "100",
                 TipTxt = "10"
@@ -161,8 +163,7 @@ namespace tipcalc_standard.tests
         [TestMethod]
         public void CalculateTipPercentFor6_30On35Total_ValidInput_TipPercentageIs18_TotalIs41_30Dollars()
         {
-            var myCalculator = new TipCalculator();
-            var myCalculatorViewModel = new CalculatorPageViewModel(myCalculator)
+            var myCalculatorViewModel = new CalculatorPageViewModel(myCalculator, myTipCalcTransaction, myTipDatabase)
             {
                 TotalTxt = "35",
                 TipTxt = "6.30"
@@ -177,15 +178,14 @@ namespace tipcalc_standard.tests
         [TestMethod]
         public void ResetCalulator_ValidViewModel_CalculatorResetToInitialState()
         {
-            var myCalculator = new TipCalculator();
-            var myCalculatorViewModel = new CalculatorPageViewModel(myCalculator)
+            var myCalculatorViewModel = new CalculatorPageViewModel(myCalculator, myTipCalcTransaction, myTipDatabase)
             {
                 TotalTxt = "35",
                 TipTxt = "6.30"
             };
 
             var newCalculator = new TipCalculator();
-            var newCalculatorViewModel = new CalculatorPageViewModel(myCalculator);
+            var newCalculatorViewModel = new CalculatorPageViewModel(myCalculator, myTipCalcTransaction, myTipDatabase);
             
             myCalculatorViewModel.ResetCalculator();
 
@@ -199,8 +199,7 @@ namespace tipcalc_standard.tests
         [TestMethod]
         public void RoundTip_Total49_36TipPercent15_GrandTotal172()
         {
-            var myCalculator = new TipCalculator();
-            var myCalculatorViewModel = new CalculatorPageViewModel(myCalculator)
+            var myCalculatorViewModel = new CalculatorPageViewModel(myCalculator, myTipCalcTransaction, myTipDatabase)
             {
                 TotalTxt = "149.36",
                 TipPercent = 15
@@ -215,8 +214,7 @@ namespace tipcalc_standard.tests
         [TestMethod]
         public void RoundTip_Total49_36TipPercent18_GrandTotal176()
         {
-            var myCalculator = new TipCalculator();
-            var myCalculatorViewModel = new CalculatorPageViewModel(myCalculator)
+            var myCalculatorViewModel = new CalculatorPageViewModel(myCalculator, myTipCalcTransaction, myTipDatabase)
             {
                 TotalTxt = "149.36",
                 TipPercent = 18
@@ -231,8 +229,7 @@ namespace tipcalc_standard.tests
         [TestMethod]
         public void RoundTipThenUnRoundTip_Total49_36TipPercent15_GrandTotal171_76()
         {
-            var myCalculator = new TipCalculator();
-            var myCalculatorViewModel = new CalculatorPageViewModel(myCalculator)
+            var myCalculatorViewModel = new CalculatorPageViewModel(myCalculator, myTipCalcTransaction, myTipDatabase)
             {
                 TotalTxt = "149.36",
                 TipPercent = 15
@@ -248,8 +245,7 @@ namespace tipcalc_standard.tests
         [TestMethod]
         public void SplitCheck_OnePerson_TotalPerPersonTxtEqualsGrandTotalTxt()
         {
-            var myCalculator = new TipCalculator();
-            var myCalculatorViewModel = new CalculatorPageViewModel(myCalculator)
+            var myCalculatorViewModel = new CalculatorPageViewModel(myCalculator, myTipCalcTransaction, myTipDatabase)
             {
                 TotalTxt = "149.36",
                 TipPercent = 15,
@@ -262,8 +258,7 @@ namespace tipcalc_standard.tests
         [TestMethod]
         public void SplitCheck_TwoPersons_TotalPerPersonTxtEqualsOneHalfGrandTotalTxt()
         {
-            var myCalculator = new TipCalculator();
-            var myCalculatorViewModel = new CalculatorPageViewModel(myCalculator)
+            var myCalculatorViewModel = new CalculatorPageViewModel(myCalculator, myTipCalcTransaction, myTipDatabase)
             {
                 TotalTxt = "100.00",
                 TipPercent = 10,
@@ -276,8 +271,7 @@ namespace tipcalc_standard.tests
         [TestMethod]
         public void SplitCheck_ThreePersons_TotalPerPersonTxtEqualsOneHalfGrandTotalTxt()
         {
-            var myCalculator = new TipCalculator();
-            var myCalculatorViewModel = new CalculatorPageViewModel(myCalculator)
+            var myCalculatorViewModel = new CalculatorPageViewModel(myCalculator, myTipCalcTransaction, myTipDatabase)
             {
                 TotalTxt = "99.00",
                 TipPercent = 0,
