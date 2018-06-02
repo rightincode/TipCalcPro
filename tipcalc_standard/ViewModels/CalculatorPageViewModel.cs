@@ -165,7 +165,7 @@ namespace tipcalc_standard.ViewModels
             _tipCalcTransaction.GrandTotal = _calculator.GrandTotal;
             _tipCalcTransaction.NumOfPersons = _calculator.NumberOfPersons;
             _tipCalcTransaction.Saved = DateTime.UtcNow;            
-            _tipCalcTransaction.Split = (NumberOfPersons > 0 ) ? true : false;
+            _tipCalcTransaction.Split = (NumberOfPersons > 1 ) ? true : false;
             _tipCalcTransaction.Tip = _calculator.Tip;
             _tipCalcTransaction.TipPercent = _calculator.TipPercent;
             _tipCalcTransaction.Total = _calculator.Total;

@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-
+using System.Threading.Tasks;
 using tipcalc_core.Models;
 using tipcalc_standard.tests.Models;
 using tipcalc_standard.ViewModels;
@@ -279,6 +279,41 @@ namespace tipcalc_standard.tests
             };
 
             Assert.AreEqual("33.00", myCalculatorViewModel.TotalPerPersonTxt);
+        }
+
+        [TestMethod]
+        public async Task SaveTipTransaction_ValidTip_PositiveTipTransactionId()
+        {
+            var myCalculatorViewModel = new CalculatorPageViewModel(myCalculator, myTipCalcTransaction, myTipDatabase)
+            {
+                TotalTxt = "100.00",
+                TipPercent = 10,
+            };
+
+            int result = await myCalculatorViewModel.SaveTipTransaction();
+
+            Assert.IsTrue(result > 0);
+        }
+
+        [TestMethod]
+        public async Task SaveTipTransaction_ValidTip_CalculatorAndTransactionValuesMatch()
+        {
+            var myCalculatorViewModel = new CalculatorPageViewModel(myCalculator, myTipCalcTransaction, myTipDatabase)
+            {
+                TotalTxt = "100.00",
+                TipPercent = 10,
+            };
+
+            int result = await myCalculatorViewModel.SaveTipTransaction();
+
+            Assert.AreEqual(myCalculator.GrandTotal, myTipCalcTransaction.GrandTotal);
+            Assert.AreEqual(myCalculator.NumberOfPersons, myTipCalcTransaction.NumOfPersons);
+            Assert.AreEqual(myCalculator.Tip, myTipCalcTransaction.Tip);
+            Assert.AreEqual(myCalculator.TipPercent, myTipCalcTransaction.TipPercent);
+            Assert.AreEqual(myCalculator.Total, myTipCalcTransaction.Total);
+            Assert.AreEqual(myCalculator.TotalPerPerson, myTipCalcTransaction.TotalPerPerson);
+            Assert.AreEqual(false, myTipCalcTransaction.Split);
+            Assert.IsNotNull(myTipCalcTransaction.Split);
         }
     }
 }
