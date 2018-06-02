@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
@@ -13,9 +13,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\tipcalcapp\tipcalcapp.csproj" />
+    <ProjectReference Include="..\tipcalc_core\tipcalc_core.csproj" />
     <ProjectReference Include="..\tipcalc_data\tipcalc_data.csproj" />
-    <ProjectReference Include="..\tipcalc_standard\tipcalcapp.csproj" />
-    <ProjectReference Include="..\tipclac_core\tipcalc_core.csproj" />
   </ItemGroup>
 
 </Project>
