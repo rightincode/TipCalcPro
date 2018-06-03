@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Text;
 
 namespace tipcalcapp.ViewModels
 {
@@ -18,7 +15,7 @@ namespace tipcalcapp.ViewModels
                     new MainPageMenuItem { Id = 0, Title = "Home", Image = "baseline_home_black_18dp.png", IsEnabled = true },
                     new MainPageMenuItem { Id = 1, Title = "Tip Calculator", Image = "baseline_payment_black_18dp.png", IsEnabled = true },
                     new MainPageMenuItem { Id = 2, Title = "Tip History", Image = "baseline_list_black_18dp.png", IsEnabled = true },
-                    new MainPageMenuItem { Id = 3, Title = "Login", Image = "baseline_globe_black_18dp.png", IsEnabled = false },
+                    new MainPageMenuItem { Id = 3, Title = "Login", Image = "baseline_globe_black_18dp.png", IsEnabled = true },
             });
         }
 

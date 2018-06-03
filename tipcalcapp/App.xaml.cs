@@ -1,5 +1,8 @@
 ﻿using System;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Identity.Client;
+using tipcalc.Interfaces;
+using tipcalc.Models;
 using tipcalc_core.Interfaces;
 using tipcalc_core.Models;
 using tipcalc_data.Interfaces;
@@ -16,11 +19,15 @@ namespace tipcalc
 
         public IServiceProvider ServiceProvider { get; private set; }
 
+        public static IAuthenticate AuthenticationProvider { get; private set; }
+
+        public static UIParent UiParent = null;
+
         public App()
         {
             InitializeComponent();
             StartupConfiguration();
-
+            AuthenticationProvider = new AuthenticationProvider();
             MainPage = new NavigationPage(new MainPage());
         }
 

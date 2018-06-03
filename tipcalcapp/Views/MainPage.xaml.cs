@@ -41,6 +41,10 @@ namespace tipcalcapp.Views
                     page = new TipHistoryPage();
                     break;
 
+                case 3:
+                    page = new LoginPage();
+                    break;
+
                 default:
                     item.TargetType = typeof(HomeDetailPage);
                     page = (Page)Activator.CreateInstance(item.TargetType);
