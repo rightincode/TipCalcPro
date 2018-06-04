@@ -21,7 +21,7 @@ namespace tipcalcapp.Views
                 bool authenticated = await App.AuthenticationProvider.LoginAsync(true);
                 if (authenticated)
                 {
-                    Application.Current.MainPage = new SharedTipHistoryPage();
+                    Application.Current.MainPage = new NavigationPage(new MainPage());
                 }
                 else
                 {
@@ -30,7 +30,7 @@ namespace tipcalcapp.Views
                         authenticated = await App.AuthenticationProvider.LoginAsync();
                         if (authenticated)
                         {
-                            Application.Current.MainPage = new SharedTipHistoryPage();
+                            Application.Current.MainPage = new NavigationPage(new MainPage());
                         }
                         else
                         {

@@ -24,7 +24,7 @@ namespace tipcalc.Models
         public static readonly string URLScheme = "msal41179e6b-e135-4de7-9f6e-5bbad25c8ba0";
         public static readonly string RedirectUri = $"{URLScheme}://auth";
 
-        public static PublicClientApplication AuthClient { get; private set; }
+        public PublicClientApplication AuthClient { get; set; }
 
         public AuthenticationProvider()
         {
@@ -55,6 +55,11 @@ namespace tipcalc.Models
                         App.UiParent);
                 }
 
+                if ((authenticationResult != null) && (!string.IsNullOrEmpty(authenticationResult.IdToken)))
+                {
+                    success = true;
+                }
+                
                 //if (User == null)
                 //{
                 //    var payload = new JObject();
@@ -63,10 +68,10 @@ namespace tipcalc.Models
                 //        payload["access_token"] = authenticationResult.IdToken;
                 //    }
 
-                    //User = await TodoItemManager.DefaultManager.CurrentClient.LoginAsync(
-                    //    MobileServiceAuthenticationProvider.WindowsAzureActiveDirectory,
-                    //    payload);
-                    //success = true;
+                //User = await TodoItemManager.DefaultManager.CurrentClient.LoginAsync(
+                //    MobileServiceAuthenticationProvider.WindowsAzureActiveDirectory,
+                //    payload);
+                //success = true;
                 //}
             }
             catch (Exception ex)
@@ -79,6 +84,37 @@ namespace tipcalc.Models
         public Task<bool> LogoutAsync()
         {
             throw new NotImplementedException();
+        }
+
+        public bool Logout()
+        {
+            bool success = false;
+            try
+            {
+                //if (User != null)
+                //{
+                //    await TodoItemManager.DefaultManager.CurrentClient.LogoutAsync();
+
+                //    foreach (var user in ADB2CClient.Users)
+                //    {
+                //        ADB2CClient.Remove(user);
+                //    }
+                //    User = null;
+                //    success = true;
+                //}
+
+                foreach (var user in AuthClient.Users)
+                {
+                    AuthClient.Remove(user);
+                }
+                
+                success = true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return success;
         }
 
         IUser GetUserByPolicy(IEnumerable<IUser> users, string policy)
@@ -100,5 +136,6 @@ namespace tipcalc.Models
             var decoded = Encoding.UTF8.GetString(byteArray, 0, byteArray.Count());
             return decoded;
         }
+                
     }
 }

@@ -1,4 +1,6 @@
-﻿using tipcalcapp.ViewModels;
+﻿using System.Linq;
+using tipcalc;
+using tipcalcapp.ViewModels;
 
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
@@ -15,8 +17,8 @@ namespace tipcalcapp.Views
         {
             InitializeComponent();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
-
-            BindingContext = new MainPageMasterViewModel();
+            bool LoggedIn = (App.AuthenticationProvider.AuthClient.Users.Count() > 0) ? true : false;
+            BindingContext = new MainPageMasterViewModel(LoggedIn);
             ListView = MenuItemsListView;            
         }        
     }

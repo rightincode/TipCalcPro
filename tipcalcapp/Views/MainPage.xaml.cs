@@ -1,7 +1,8 @@
 ﻿using System;
+using System.Linq;
 
+using tipcalc;
 using tipcalcapp.ViewModels;
-using tipcalc_core.Interfaces;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -34,15 +35,23 @@ namespace tipcalcapp.Views
                     break;
 
                 case 1:
-                    page = new CalculatorPage();
+                    item.TargetType = typeof(CalculatorPage);
+                    page = (Page)Activator.CreateInstance(item.TargetType);                    
                     break;
 
                 case 2:
-                    page = new TipHistoryPage();
+                    item.TargetType = typeof(TipHistoryPage);
+                    page = (Page)Activator.CreateInstance(item.TargetType);
                     break;
 
                 case 3:
-                    page = new LoginPage();
+                    item.TargetType = typeof(LoginPage);
+                    page = (Page)Activator.CreateInstance(item.TargetType);
+                    break;
+
+                case 4:
+                    item.TargetType = typeof(LogoutPage);
+                    page = (Page)Activator.CreateInstance(item.TargetType);
                     break;
 
                 default:
