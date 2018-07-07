@@ -1,10 +1,13 @@
 ﻿using System;
-using tipcalc_core.Interfaces;
+using SQLite;
 
-namespace tipcalc_core.Models
+using tipcalc_data.Interfaces;
+
+namespace tipcalc_data.Models
 {
-    public class TipCalcTransaction : ITipCalcTransaction
+    public class TipCalcTransactionDO : ITipCalcTransactionDO
     {
+        [PrimaryKey, AutoIncrement]
         public int Id { get ; set; }
 
         public decimal Total { get ; set ; }
@@ -16,7 +19,7 @@ namespace tipcalc_core.Models
         public decimal TotalPerPerson { get ; set ; }
         public DateTime Saved { get ; set ; }
         
-        public TipCalcTransaction()
+        public TipCalcTransactionDO()
         {
 
         }

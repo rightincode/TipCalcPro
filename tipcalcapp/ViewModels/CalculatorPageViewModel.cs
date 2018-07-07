@@ -170,9 +170,8 @@ namespace tipcalcapp.ViewModels
             _tipCalcTransaction.TipPercent = _calculator.TipPercent;
             _tipCalcTransaction.Total = _calculator.Total;
             _tipCalcTransaction.TotalPerPerson = _calculator.TotalPerPerson;
-            
-            await _tipDatabase.SaveTipCalcTransactionAsync(_tipCalcTransaction);
-            return _tipCalcTransaction.Id;
+
+            return await _tipDatabase.SaveTipCalcTransactionAsync(_tipCalcTransaction);
         }
 
         private void CalculateTipPropertyChangedNotifications()
