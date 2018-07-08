@@ -2,14 +2,17 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using tipcalc_core.Interfaces;
 using tipcalc_data.Interfaces;
+using tipcalcapp.Validations;
 using Xamarin.Forms;
 
 namespace tipcalcapp.ViewModels
 {
-    public class CalculatorPageViewModel : INotifyPropertyChanged
+    public class CalculatorPageViewModel : ExtendedBindableObject, INotifyPropertyChanged
     {
+        private ValidatableObject<string> _totalTextVal;
         private string totalTxt;
         private string tipTxt;
         private readonly ITipCalculator _calculator;
@@ -23,6 +26,10 @@ namespace tipcalcapp.ViewModels
             _calculator = tipCalculator;
             _tipCalcTransaction = tipCalcTransaction;
             _tipDatabase = tipDatabase;
+
+            _totalTextVal = new ValidatableObject<string>();
+
+            AddValidations();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -34,6 +41,33 @@ namespace tipcalcapp.ViewModels
             new TipPercentage{ TipPercentageTxt = "20%", TipPercentageValue = 20},
             new TipPercentage{ TipPercentageTxt = "22%", TipPercentageValue = 22},
         };
+
+        public ValidatableObject<string> TotalTxtVal
+        {
+            get
+            {
+                return _totalTextVal;
+            }
+            set
+            {
+                _totalTextVal = value;
+
+                try
+                {
+                    _calculator.Total = decimal.Parse(_totalTextVal.Value);
+                    RaisePropertyChanged(() => TotalTxtVal);
+                }
+                catch (Exception)
+                {
+                    _calculator.Total = 0;
+                }
+                finally
+                {
+                    _calculator.CalcTip();
+                    //CalculateTipPropertyChangedNotifications();
+                }
+            }
+        }
 
         public string TotalTxt
         {
@@ -140,6 +174,8 @@ namespace tipcalcapp.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TotalPerPersonTxt"));
         }
 
+        public ICommand ValidateTotalTxtCommand => new Command(() => ValidateTotalTxt());
+
         private void SplitGrandTotal()
         {
             _calculator.SplitGrandTotal();
@@ -191,6 +227,14 @@ namespace tipcalcapp.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TotalPerPersonTxt"));
         }
 
-        
+        private void AddValidations()
+        {
+            _totalTextVal.Validations.Add(new IsPositiveNumericValueRule<string> { ValidationMessage = "Must be greater than zero." });
+        }
+
+        private bool ValidateTotalTxt()
+        {
+            return _totalTextVal.Validate();
+        }
     }
 }

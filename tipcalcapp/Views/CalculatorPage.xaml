@@ -1,8 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="tipcalcapp.Views.CalculatorPage">
-
+             x:Class="tipcalcapp.Views.CalculatorPage"
+             xmlns:behaviors="clr-namespace:tipcalcapp.Behaviors;assembly=tipcalcapp"
+             xmlns:converters="clr-namespace:tipcalcapp.Converters;assembly=tipcalcapp">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:FirstValidationErrorConverter x:Key="FirstValidationErrorConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout Orientation="Vertical" Spacing="20">
             <StackLayout Orientation="Horizontal">
@@ -12,7 +18,14 @@
                        FontSize="Medium" 
                        HorizontalTextAlignment="End" 
                        VerticalTextAlignment="Center"></Label>
-                <Entry x:Name="txtTotal" WidthRequest="100" Keyboard="Numeric" Text="{Binding TotalTxt, Mode=TwoWay}"></Entry>
+                <Entry x:Name="txtTotal" WidthRequest="100" Keyboard="Numeric" Text="{Binding TotalTxtVal.Value, Mode=TwoWay}">
+                    <Entry.Behaviors>
+                        <behaviors:EventToCommandBehavior
+                             EventName="TextChanged"
+                             Command="{Binding ValidateTotalTxtCommand}" />
+                    </Entry.Behaviors>
+                </Entry>
+                <Label Text="{Binding TotalTxtVal.Errors, Converter={StaticResource FirstValidationErrorConverter}}"></Label>
             </StackLayout>
             <StackLayout Orientation="Horizontal">
                 <Label x:Name="lblTipAmount" 
