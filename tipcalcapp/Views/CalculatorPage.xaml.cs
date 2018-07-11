@@ -29,7 +29,6 @@ namespace tipcalcapp.Views
         private void InitializeEventHandlers()
         {
             tipPercentPreset.SelectedIndexChanged += OnTipPercentPresetSelectedIndexChanged;
-            btnResetTipCalculator.Clicked += OnBtnResetTipCalculatorClicked;
             swtRounded.Toggled += OnSwtRoundedToggled;
             sldTipCalc.ValueChanged += OnSldTipCalcValueChanged;
             stpNumberOfPersons.ValueChanged += OnStpNumberOfPersonsValueChanged;
@@ -51,12 +50,6 @@ namespace tipcalcapp.Views
                     swtRounded.IsToggled = false;
                 }
             }
-        }
-
-        private void OnBtnResetTipCalculatorClicked(object sender, EventArgs e)
-        {
-            tipPercentPreset.SelectedIndex = -1;
-            VM.ResetCalculator();
         }
 
         private void OnSwtRoundedToggled(object sender, EventArgs e)

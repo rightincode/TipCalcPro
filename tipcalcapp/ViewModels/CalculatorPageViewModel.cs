@@ -176,6 +176,8 @@ namespace tipcalcapp.ViewModels
 
         public ICommand ValidateTotalTxtCommand => new Command(() => ValidateTotalTxt());
 
+        public ICommand ResetCalculatorCommand => new Command(() => ResetCalculator());
+
         private void SplitGrandTotal()
         {
             _calculator.SplitGrandTotal();
@@ -231,7 +233,7 @@ namespace tipcalcapp.ViewModels
         {
             _totalTextVal.Validations.Add(new IsPositiveNumericValueRule<string> { ValidationMessage = "Must be greater than zero." });
         }
-
+        
         private bool ValidateTotalTxt()
         {
             return _totalTextVal.Validate();

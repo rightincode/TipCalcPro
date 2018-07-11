@@ -118,7 +118,8 @@
                         Text="Reset"
                         WidthRequest="100"
                         FontSize="Medium"
-                        VerticalOptions="Center"></Button>
+                        VerticalOptions="Center"
+                        Command="{Binding ResetCalculatorCommand}"></Button>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>
