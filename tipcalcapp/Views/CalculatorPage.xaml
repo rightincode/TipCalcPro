@@ -18,7 +18,7 @@
                        FontSize="Medium" 
                        HorizontalTextAlignment="End" 
                        VerticalTextAlignment="Center"></Label>
-                <Entry x:Name="txtTotal" WidthRequest="100" Keyboard="Numeric" Text="{Binding TotalTxtVal.Value, Mode=TwoWay}">
+                <Entry x:Name="txtTotal" WidthRequest="100" Keyboard="Numeric" Text="{Binding TotalTxt, Mode=TwoWay}">
                     <Entry.Behaviors>
                         <behaviors:EventToCommandBehavior
                              EventName="TextChanged"

@@ -12,8 +12,7 @@ namespace tipcalcapp.ViewModels
 {
     public class CalculatorPageViewModel : ExtendedBindableObject, INotifyPropertyChanged
     {
-        private ValidatableObject<string> _totalTextVal;
-        private string totalTxt;
+        private ValidatableObject<string> _totalText;
         private string tipTxt;
         private readonly ITipCalculator _calculator;
         private readonly ITipDatabase _tipDatabase;
@@ -27,12 +26,10 @@ namespace tipcalcapp.ViewModels
             _tipCalcTransaction = tipCalcTransaction;
             _tipDatabase = tipDatabase;
 
-            _totalTextVal = new ValidatableObject<string>();
+            _totalText = new ValidatableObject<string>();
 
             AddValidations();
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
 
         public List<TipPercentage> TipPresets { get; } = new List<TipPercentage>
         {
@@ -42,48 +39,19 @@ namespace tipcalcapp.ViewModels
             new TipPercentage{ TipPercentageTxt = "22%", TipPercentageValue = 22},
         };
 
-        public ValidatableObject<string> TotalTxtVal
-        {
-            get
-            {
-                return _totalTextVal;
-            }
-            set
-            {
-                _totalTextVal = value;
-
-                try
-                {
-                    _calculator.Total = decimal.Parse(_totalTextVal.Value);
-                    RaisePropertyChanged(() => TotalTxtVal);
-                }
-                catch (Exception)
-                {
-                    _calculator.Total = 0;
-                }
-                finally
-                {
-                    _calculator.CalcTip();
-                    //CalculateTipPropertyChangedNotifications();
-                }
-            }
-        }
-
         public string TotalTxt
         {
             get
             {
-                return _calculator.Total.ToString();
+                return (!string.IsNullOrEmpty(_totalText.Value)) ? _totalText.Value : _calculator.Total.ToString();
             }
-
             set
             {
-                totalTxt = value;
+                _totalText.Value = value;
 
                 try
                 {
-                    string newValue = value;
-                    _calculator.Total = decimal.Parse(newValue);
+                    _calculator.Total = decimal.Parse(_totalText.Value);
                 }
                 catch (Exception)
                 {
@@ -159,19 +127,21 @@ namespace tipcalcapp.ViewModels
         public void RoundTotal()
         {
             _calculator.RoundTotal();
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TipTxt"));
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("GrandTotalTxt"));
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("NumberOfPersons"));
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TotalPerPersonTxt"));
+
+            RaisePropertyChanged(() => TipTxt);
+            RaisePropertyChanged(() => GrandTotalTxt);
+            RaisePropertyChanged(() => NumberOfPersons);
+            RaisePropertyChanged(() => TotalPerPersonTxt);
         }
 
         public void UnRoundTotal()
         {
             _calculator.UnRoundTotal();
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TipTxt"));
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("GrandTotalTxt"));
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("NumberOfPersons"));
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TotalPerPersonTxt"));
+
+            RaisePropertyChanged(() => TipTxt);
+            RaisePropertyChanged(() => GrandTotalTxt);
+            RaisePropertyChanged(() => NumberOfPersons);
+            RaisePropertyChanged(() => TotalPerPersonTxt);
         }
 
         public ICommand ValidateTotalTxtCommand => new Command(() => ValidateTotalTxt());
@@ -181,20 +151,23 @@ namespace tipcalcapp.ViewModels
         private void SplitGrandTotal()
         {
             _calculator.SplitGrandTotal();
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("NumberOfPersons"));
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TotalPerPersonTxt"));
+
+            RaisePropertyChanged(() => NumberOfPersons);
+            RaisePropertyChanged(() => TotalPerPersonTxt);
         }
 
         public void ResetCalculator()
         {
             _calculator.Reset();
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TotalTxt"));
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TipTxt"));
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TipPercentTxt"));
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TipPercent"));
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("GrandTotalTxt"));
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("NumberOfPersons"));
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TotalPerPersonTxt"));
+            TotalTxt = _calculator.Total.ToString();
+
+            RaisePropertyChanged(() => TotalTxt);
+            RaisePropertyChanged(() => TipTxt);
+            RaisePropertyChanged(() => TipPercentTxt);
+            RaisePropertyChanged(() => TipPercent);
+            RaisePropertyChanged(() => GrandTotalTxt);
+            RaisePropertyChanged(() => NumberOfPersons);
+            RaisePropertyChanged(() => TotalPerPersonTxt);
         }
 
         public async Task<int> SaveTipTransaction()
@@ -214,29 +187,29 @@ namespace tipcalcapp.ViewModels
 
         private void CalculateTipPropertyChangedNotifications()
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TipTxt"));
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TipPercentTxt"));
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("GrandTotalTxt"));
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("NumberOfPersons"));
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TotalPerPersonTxt"));
+            RaisePropertyChanged(() => TipTxt);
+            RaisePropertyChanged(() => TipPercentTxt);
+            RaisePropertyChanged(() => GrandTotalTxt);
+            RaisePropertyChanged(() => NumberOfPersons);
+            RaisePropertyChanged(() => TotalPerPersonTxt);
         }
 
         private void CalculateTipPercentagePropertyChangedNotifications()
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TipPercentTxt"));
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("GrandTotalTxt"));
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("NumberOfPersons"));
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TotalPerPersonTxt"));
+            RaisePropertyChanged(() => TipPercentTxt);
+            RaisePropertyChanged(() => GrandTotalTxt);
+            RaisePropertyChanged(() => NumberOfPersons);
+            RaisePropertyChanged(() => TotalPerPersonTxt);
         }
 
         private void AddValidations()
         {
-            _totalTextVal.Validations.Add(new IsPositiveNumericValueRule<string> { ValidationMessage = "Must be greater than zero." });
+            _totalText.Validations.Add(new IsPositiveNumericValueRule<string> { ValidationMessage = "Must be greater than zero." });
         }
         
         private bool ValidateTotalTxt()
         {
-            return _totalTextVal.Validate();
+            return _totalText.Validate();
         }
     }
 }

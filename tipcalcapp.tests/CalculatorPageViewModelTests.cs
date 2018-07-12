@@ -185,7 +185,9 @@ namespace tipcalcapp.tests
             };
 
             var newCalculator = new TipCalculator();
-            var newCalculatorViewModel = new CalculatorPageViewModel(myCalculator, myTipCalcTransaction, myTipDatabase);
+            var newTipCalcTransaction = new TipCalcTransaction();
+            var newTipDatabase = new TipDatabaseMock(new FileHelperMock());
+            var newCalculatorViewModel = new CalculatorPageViewModel(newCalculator, newTipCalcTransaction, newTipDatabase);
             
             myCalculatorViewModel.ResetCalculator();
 
