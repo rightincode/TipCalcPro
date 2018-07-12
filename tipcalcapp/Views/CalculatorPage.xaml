@@ -113,7 +113,8 @@
                         Text="Save"
                         WidthRequest="100"
                         FontSize="Medium"
-                        VerticalOptions="Center"></Button>
+                        VerticalOptions="Center"
+                        Command="{Binding SaveTipTransactionCommand}"></Button>
                 <Button x:Name="btnResetTipCalculator"
                         Text="Reset"
                         WidthRequest="100"

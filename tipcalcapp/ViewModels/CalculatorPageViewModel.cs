@@ -17,8 +17,8 @@ namespace tipcalcapp.ViewModels
         private readonly ITipCalculator _calculator;
         private readonly ITipDatabase _tipDatabase;
         private ITipCalcTransaction _tipCalcTransaction;
-        
-        public CalculatorPageViewModel(ITipCalculator tipCalculator, 
+
+        public CalculatorPageViewModel(ITipCalculator tipCalculator,
             ITipCalcTransaction tipCalcTransaction,
             ITipDatabase tipDatabase)
         {
@@ -88,7 +88,7 @@ namespace tipcalcapp.ViewModels
                 }
             }
         }
-        
+
         public string TipPercentTxt
         {
             get { return _calculator.TipPercent.ToString(); }
@@ -111,7 +111,7 @@ namespace tipcalcapp.ViewModels
 
         public int NumberOfPersons
         {
-            get { return _calculator.NumberOfPersons;  }
+            get { return _calculator.NumberOfPersons; }
             set
             {
                 _calculator.NumberOfPersons = value;
@@ -148,6 +148,16 @@ namespace tipcalcapp.ViewModels
 
         public ICommand ResetCalculatorCommand => new Command(() => ResetCalculator());
 
+        public ICommand SaveTipTransactionCommand => new Command(async () =>
+        {
+            int result = await SaveTipTransaction();
+
+            if (result > 0)
+            {
+                ResetCalculator();
+            }
+        });
+        
         private void SplitGrandTotal()
         {
             _calculator.SplitGrandTotal();
