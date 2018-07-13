@@ -10,25 +10,26 @@
               HasUnevenRows="true"
               ItemsSource="{Binding MenuItems}">
       <ListView.Header>
-        <Grid BackgroundColor="#03A9F4">
-          <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="10"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="10"/>
-          </Grid.ColumnDefinitions>
-          <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="80"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="10"/>
-          </Grid.RowDefinitions>
-          <Label
-              Grid.Column="1"
-              Grid.Row="2"
-              Text="TipCalcPro"
-              Style="{DynamicResource SubtitleStyle}"/>
-        </Grid>
-      </ListView.Header>
+            <Grid BackgroundColor="#03A9F4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="10"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="10"/>
+                </Grid.RowDefinitions>
+                <StackLayout Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                    <Label Text="TipCalcPro"
+                           Style="{DynamicResource SubtitleStyle}"/>
+                    <Label Text="{Binding TipHistoryCount}"
+                           Style="{DynamicResource SubtitleStyle}"/>
+                </StackLayout>
+            </Grid>
+        </ListView.Header>
       <ListView.ItemTemplate>
         <DataTemplate>
           <ViewCell IsEnabled="{Binding IsEnabled}">
@@ -38,7 +39,7 @@
                     VerticalTextAlignment="Center" 
                     Text="{Binding Title}"                    
                     IsEnabled="{Binding IsEnabled}"
-                    FontSize="24"/>
+                    FontSize="24"/>                
             </StackLayout>
           </ViewCell>
         </DataTemplate>

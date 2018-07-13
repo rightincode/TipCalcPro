@@ -6,6 +6,7 @@ using System.Windows.Input;
 using tipcalc_core.Interfaces;
 using tipcalc_data.Interfaces;
 using tipcalcapp.Validations;
+using tipcalcapp.Messages;
 using Xamarin.Forms;
 
 namespace tipcalcapp.ViewModels
@@ -29,6 +30,10 @@ namespace tipcalcapp.ViewModels
             _totalText = new ValidatableObject<string>();
 
             AddValidations();
+
+            Task.Run(async () => {
+                SendTipSavedMessage(await GetCurrentCountOfSavedTipTransactions());
+            });            
         }
 
         public List<TipPercentage> TipPresets { get; } = new List<TipPercentage>
@@ -192,7 +197,11 @@ namespace tipcalcapp.ViewModels
             _tipCalcTransaction.Total = _calculator.Total;
             _tipCalcTransaction.TotalPerPerson = _calculator.TotalPerPerson;
 
-            return await _tipDatabase.SaveTipCalcTransactionAsync(_tipCalcTransaction);
+            int saveResult = await _tipDatabase.SaveTipCalcTransactionAsync(_tipCalcTransaction);
+
+            SendTipSavedMessage(await GetCurrentCountOfSavedTipTransactions());
+            
+            return saveResult; 
         }
 
         private void CalculateTipPropertyChangedNotifications()
@@ -220,6 +229,17 @@ namespace tipcalcapp.ViewModels
         private bool ValidateTotalTxt()
         {
             return _totalText.Validate();
+        }
+
+        private async Task<int> GetCurrentCountOfSavedTipTransactions()
+        {
+            var tipTransactions = await _tipDatabase.GetTipCalcTransactionsAsync();
+            return tipTransactions.Count;
+        }
+
+        private void SendTipSavedMessage(int tipCount)
+        {
+            MessagingCenter.Send(this, MessageKeys.SaveTip, tipCount);
         }
     }
 }

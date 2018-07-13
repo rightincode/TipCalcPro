@@ -1,15 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using System.Text;
+﻿using System.Collections.ObjectModel;
+using tipcalcapp.Messages;
+using tipcalcapp.Validations;
+using Xamarin.Forms;
 
 namespace tipcalcapp.ViewModels
 {
-    public class MainPageMasterViewModel : INotifyPropertyChanged
+    public class MainPageMasterViewModel : ExtendedBindableObject
     {
         public ObservableCollection<MainPageMenuItem> MenuItems { get; set; }
+
+        public int TipHistoryCount { get; set; }
 
         public MainPageMasterViewModel()
         {
@@ -20,17 +20,18 @@ namespace tipcalcapp.ViewModels
                     new MainPageMenuItem { Id = 2, Title = "Tip History", Image = "baseline_list_black_18dp.png", IsEnabled = true },
                     new MainPageMenuItem { Id = 3, Title = "Login", Image = "baseline_globe_black_18dp.png", IsEnabled = false },
             });
-        }
 
-        #region INotifyPropertyChanged Implementation
-        public event PropertyChangedEventHandler PropertyChanged;
-        void OnPropertyChanged([CallerMemberName] string propertyName = "")
+            SubscribeToMessages();
+        }
+        
+        private void SubscribeToMessages()
         {
-            if (PropertyChanged == null)
-                return;
-
-            PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            MessagingCenter.Subscribe<CalculatorPageViewModel, int>(
+                 this, MessageKeys.SaveTip, (sender, arg) =>
+                 {
+                     TipHistoryCount = arg;
+                     RaisePropertyChanged(() => TipHistoryCount);
+                 });
         }
-        #endregion
     }
 }

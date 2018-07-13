@@ -25,7 +25,6 @@ namespace tipcalcapp.Views
 
             Page page;
 
-            //Todo: set when constructed?
             switch (item.Id)
             {
                 case 0:
