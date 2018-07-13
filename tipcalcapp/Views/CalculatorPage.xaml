@@ -25,7 +25,7 @@
                              Command="{Binding ValidateTotalTxtCommand}" />
                     </Entry.Behaviors>
                 </Entry>
-                <Label Text="{Binding TotalTxtVal.Errors, Converter={StaticResource FirstValidationErrorConverter}}"></Label>
+                <Label Text="{Binding TotalTxtErrors, Converter={StaticResource FirstValidationErrorConverter}}"></Label>
             </StackLayout>
             <StackLayout Orientation="Horizontal">
                 <Label x:Name="lblTipAmount" 

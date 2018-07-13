@@ -44,6 +44,11 @@ namespace tipcalcapp.ViewModels
             new TipPercentage{ TipPercentageTxt = "22%", TipPercentageValue = 22},
         };
 
+        public List<string> TotalTxtErrors
+        {
+            get { return _totalText.Errors; }
+        }
+
         public string TotalTxt
         {
             get
@@ -206,6 +211,7 @@ namespace tipcalcapp.ViewModels
 
         private void CalculateTipPropertyChangedNotifications()
         {
+            RaisePropertyChanged(() => TotalTxtErrors);
             RaisePropertyChanged(() => TipTxt);
             RaisePropertyChanged(() => TipPercentTxt);
             RaisePropertyChanged(() => GrandTotalTxt);
