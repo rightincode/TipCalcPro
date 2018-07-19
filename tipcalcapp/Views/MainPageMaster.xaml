@@ -23,7 +23,7 @@
                     <RowDefinition Height="10"/>
                 </Grid.RowDefinitions>
                 <StackLayout Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
-                    <Label Text="TipCalcPro"
+                    <Label Text="TipCalcPro - "
                            Style="{DynamicResource SubtitleStyle}"/>
                     <Label Text="{Binding TipHistoryCount}"
                            Style="{DynamicResource SubtitleStyle}"/>
