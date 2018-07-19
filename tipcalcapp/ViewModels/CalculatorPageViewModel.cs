@@ -230,6 +230,7 @@ namespace tipcalcapp.ViewModels
         private void AddValidations()
         {
             _totalText.Validations.Add(new IsPositiveNumericValueRule<string> { ValidationMessage = "Must be greater than zero." });
+            //_totalText.Validations.Add(new IsNonNegativeNumericValueRule<string> { ValidationMessage = "Cannot be negative." });
         }
         
         private bool ValidateTotalTxt()
