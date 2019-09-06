@@ -6,7 +6,7 @@
         <StackLayout>
             <ListView x:Name="TipTransactionListView"
                       ItemsSource="{Binding TipCalcTransactions}"
-                      RowHeight="140">
+                      HasUnevenRows="true">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -15,55 +15,55 @@
                                     <Label Text="Date: " 
                                            FontSize="Small" 
                                            FontAttributes="Bold"
-                                           WidthRequest="100"
+                                           WidthRequest="175"
                                            HorizontalTextAlignment="End"></Label>
                                     <Label Text="{Binding Saved, StringFormat='{0:d}'}" 
                                            FontSize="Small"
-                                           WidthRequest="75"
+                                           WidthRequest="85"
                                            HorizontalTextAlignment="End"></Label>
                                 </StackLayout>
                                 <StackLayout Orientation="Horizontal">
                                     <Label Text="Amount: " 
                                            FontSize="Small" 
                                            FontAttributes="Bold"
-                                           WidthRequest="100"
+                                           WidthRequest="175"
                                            HorizontalTextAlignment="End"></Label>
                                     <Label Text="{Binding Total, StringFormat='{0:c}'}" 
                                            FontSize="Small"
-                                           WidthRequest="75"
+                                           WidthRequest="85"
                                            HorizontalTextAlignment="End"></Label>
                                 </StackLayout>
                                 <StackLayout Orientation="Horizontal">
                                     <Label Text="Tip: " 
                                            FontSize="Small" 
                                            FontAttributes="Bold"
-                                           WidthRequest="100"
+                                           WidthRequest="175"
                                            HorizontalTextAlignment="End"></Label>
                                     <Label Text="{Binding Tip, StringFormat='{0:c}'}" 
                                            FontSize="Small"
-                                           WidthRequest="75"
+                                           WidthRequest="85"
                                            HorizontalTextAlignment="End"></Label>
                                 </StackLayout>
                                 <StackLayout Orientation="Horizontal">
                                     <Label Text="Total Payment: " 
                                            FontSize="Small" 
                                            FontAttributes="Bold"
-                                           WidthRequest="100"
+                                           WidthRequest="175"
                                            HorizontalTextAlignment="End"></Label>
                                     <Label Text="{Binding GrandTotal, StringFormat='{0:c}'}" 
                                            FontSize="Small"
-                                           WidthRequest="75"
+                                           WidthRequest="85"
                                            HorizontalTextAlignment="End"></Label>
                                 </StackLayout>
                                 <StackLayout Orientation="Horizontal">
                                     <Label Text="Tip %: " 
                                            FontSize="Small" 
                                            FontAttributes="Bold"
-                                           WidthRequest="100"
+                                           WidthRequest="175"
                                            HorizontalTextAlignment="End"></Label>
                                     <Label Text="{Binding TipPercent, StringFormat='{0:f2}'}" 
                                            FontSize="Small"
-                                           WidthRequest="75"
+                                           WidthRequest="85"
                                            HorizontalTextAlignment="End"></Label>
                                 </StackLayout>                                
                             </StackLayout>
