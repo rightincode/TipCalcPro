@@ -4,6 +4,7 @@ using Xamarin.Forms.Xaml;
 
 using tipcalcapp.ViewModels;
 using tipcalc_data.Interfaces;
+using Application = Xamarin.Forms.Application;
 
 namespace tipcalcapp.Views
 {

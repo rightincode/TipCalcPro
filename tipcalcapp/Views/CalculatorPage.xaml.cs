@@ -5,6 +5,7 @@ using tipcalc_data.Interfaces;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
+using Application = Xamarin.Forms.Application;
 
 namespace tipcalcapp.Views
 {

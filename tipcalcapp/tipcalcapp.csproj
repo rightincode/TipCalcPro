@@ -12,9 +12,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.2.0" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="4.5.0" />
-    <PackageReference Include="Xamarin.Forms" Version="3.0.0.482510" />
+    <PackageReference Include="Xamarin.Forms" Version="4.2.0.709249" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,9 +26,7 @@
     <Compile Update="Views\CalculatorPage.xaml.cs">
       <DependentUpon>CalculatorPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="ViewModels\MainPageMenuItem.cs">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Update="ViewModels\MainPageMenuItem.cs" />
     <Compile Update="Views\HomeDetailPage.xaml.cs">
       <DependentUpon>HomeDetailPage.xaml</DependentUpon>
     </Compile>
